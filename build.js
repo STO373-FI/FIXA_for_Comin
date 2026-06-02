@@ -1,11 +1,17 @@
 const fs = require('fs');
 const xlsx = require('xlsx');
 
-// 💡 딜레이 함수 (API 차단 방지용: 0.1초씩 쉬면서 호출)
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function run() {
     console.log("엑셀 파일 파싱 시작...");
+    
+    if (!fs.existsSync('./FIXA data.xlsx')) {
+        console.error("❌ 오류: 'FIXA data.xlsx' 파일을 찾을 수 없습니다.");
+        fs.writeFileSync('./data.json', JSON.stringify([{ error: "엑셀 파일 없음" }], null, 2));
+        return;
+    }
+
     const workbook = xlsx.readFile('./FIXA data.xlsx');
     const sheetName = workbook.SheetNames[0];
     const rawExcelData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
@@ -13,9 +19,8 @@ async function run() {
     const rowsToProcess = rawExcelData.slice(1);
     const processedItems = [];
     const uniqueItemNos = new Set();
-    const imageCache = {}; // 서버단 임시 캐시
+    const imageCache = {}; 
 
-    // 1. 기본 데이터 구조화
     rowsToProcess.forEach(row => {
         let artNo = row[3] ? String(row[3]).trim() : '';
         if (artNo && artNo.length >= 6 && artNo.length <= 8) {
@@ -35,7 +40,6 @@ async function run() {
 
     console.log(`총 ${uniqueItemNos.size}개의 고유 제품 이미지 검색 시작...`);
 
-    // 2. 이미지 API 순차 호출 (에러 방지)
     let count = 0;
     for (const itemNo of uniqueItemNos) {
         count++;
@@ -53,10 +57,9 @@ async function run() {
         imageCache[itemNo] = imgUrl;
         console.log(`[${count}/${uniqueItemNos.size}] ${itemNo} 이미지 수집 완료`);
         
-        await sleep(100); // 0.1초 휴식 (Rate Limit 방지)
+        await sleep(100); 
     }
 
-    // 3. 최종 데이터 조합 및 JSON 저장
     const finalData = processedItems.map(item => ({
         ...item,
         imageUrl: imageCache[item.itemNumber] || 'No Image'
@@ -66,7 +69,6 @@ async function run() {
     console.log("🎉 data.json 파일 생성 완료!");
 }
 
-// JSON 정밀 탐색 엔진
 function findBestImage(obj) {
     let bestUrl = null;
     function traverse(o) {
