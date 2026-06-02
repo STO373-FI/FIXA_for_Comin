@@ -3,8 +3,8 @@ name: Update FIXA Data to JSON
 on:
   push:
     paths:
-      - 'FIXA data.xlsx'  # 이 엑셀 파일이 업데이트될 때만 작동
-  workflow_dispatch:      # 수동으로 버튼 눌러서 실행할 수 있는 옵션
+      - 'FIXA data.xlsx'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm install xlsx
 
-      - name: Run Build Script (엑셀 분석 및 이미지 수집)
+      - name: Run Build Script
         run: node build.js
 
       - name: Commit and Push changes
