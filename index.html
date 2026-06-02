@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIXA 제품 이미지 대시보드</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 모바일 스크롤 및 테이블 최적화 */
+        .table-container {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        /* 스크롤바 커스텀 */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
+
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
+                📦 <span>FIXA 데이터 이미지 뷰어</span>
+            </h1>
+            <div class="text-xs text-slate-400" id="clock-display">GitHub Pages 모바일 지원 버전</div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4 space-y-6">
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 lg:col-span-2 flex flex-col justify-center">
+                <label class="block text-sm font-semibold text-slate-700 mb-2">FIXA data.xlsx 파일 업로드</label>
+                <div class="flex items-center gap-3">
+                    <input type="file" id="excelFile" accept=".xlsx, .xls" 
+                           class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer border border-slate-200 rounded-lg p-1 bg-slate-50"/>
+                    <button id="processBtn" disabled class="px-5 py-2 bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-all text-sm whitespace-nowrap">
+                        분석 시작
+                    </button>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">* D열(제품번호), B열(Media Type), C열(Area), H열(SSD), I열(EDS) 데이터를 추출합니다.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                <details class="group">
+                    <summary class="list-none flex justify-between items-center font-semibold text-sm text-slate-700 cursor-pointer select-none">
+                        <span>⚙️ 네트워크 제한 대응 (CORS 프록시)</span>
+                        <span class="transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-xs text-slate-600 border-t pt-2">
+                        <p>브라우저 환경에서 이미지 API를 직접 호출할 때 차단되는 경우 아래 프록시 서버를 활성화하세요.</p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <input type="checkbox" id="useProxy" checked class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                            <label for="useProxy" class="font-medium text-slate-700">프록시 서버 사용 활성화</label>
+                        </div>
+                        <input type="text" id="proxyUrl" value="https://api.allorigins.win/raw?url=" 
+                               class="w-full p-2 border border-slate-200 rounded bg-slate-50 text-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="프록시 URL 입력">
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div id="progressContainer" class="hidden bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-2">
+            <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-slate-700" id="progressStatus">준비 중...</span>
+                <span class="font-semibold text-blue-600" id="progressPercent">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                <div id="progressBar" class="bg-blue-600 h-3 rounded-full transition-all duration-100" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div id="filterPanel" class="hidden bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-3 gap-2">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+                    🔍 데이터 필터링 및 정렬
+                </h3>
+                <div class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-medium" id="counterDisplay">
+                    전체: 0행 | 필터 결과: 0행
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Media Type 필터</label>
+                    <input type="text" id="searchMediaType" placeholder="예: vignette (공백 시 전체)" 
+                           class="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Area 필터</label>
+                    <input type="text" id="searchArea" placeholder="예: bv002 (공백 시 전체)" 
+                           class="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">제품 번호 검색</label>
+                    <input type="text" id="searchArtNo" placeholder="번호 6~8자리 입력" 
+                           class="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50">
+                </div>
+            </div>
+        </div>
+
+        <div id="outputContainer" class="hidden space-y-4">
+            
+            <div class="hidden md:block bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="table-container">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead class="bg-slate-900 text-white text-xs font-semibold uppercase sticky top-0 z-10">
+                            <tr>
+                                <th class="p-3 border-b border-slate-700">Media Type</th>
+                                <th class="p-3 border-b border-slate-700">Area</th>
+                                <th class="p-3 border-b border-slate-700">제품 번호</th>
+                                <th class="p-3 border-b border-slate-700 text-center">이미지 (Image)</th>
+                                <th class="p-3 border-b border-slate-700">SSD</th>
+                                <th class="p-3 border-b border-slate-700">EDS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="desktopTableBody" class="text-sm divide-y divide-slate-100 bg-white">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="block md:hidden space-y-3" id="mobileCardGrid">
+                </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        // 전역 상태 데이터 관리 변수
+        let rawExcelData = [];
+        let processedItems = [];
+        const CONCURRENCY_LIMIT = 5; // 동시에 API를 호출할 개수 설정 (속도 향상 및 차단 방지)
+
+        const fileInput = document.getElementById('excelFile');
+        const processBtn = document.getElementById('processBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const progressStatus = document.getElementById('progressStatus');
+        const progressPercent = document.getElementById('progressPercent');
+        
+        const filterPanel = document.getElementById('filterPanel');
+        const outputContainer = document.getElementById('outputContainer');
+        const desktopTableBody = document.getElementById('desktopTableBody');
+        const mobileCardGrid = document.getElementById('mobileCardGrid');
+        const counterDisplay = document.getElementById('counterDisplay');
+
+        // 필터 인풋 바인딩
+        const searchMediaType = document.getElementById('searchMediaType');
+        const searchArea = document.getElementById('searchArea');
+        const searchArtNo = document.getElementById('searchArtNo');
+
+        // 파일 선택 시 이벤트
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                processBtn.disabled = false;
+                processBtn.classList.remove('bg-slate-300');
+                processBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            }
+        });
+
+        // 시작 버튼 클릭 시 엑셀 해석 및 API 트래킹 연동
+        processBtn.addEventListener('click', () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            progressContainer.classList.remove('hidden');
+            progressStatus.innerText = "Excel 파일을 읽는 중입니다...";
+            progressBar.style.width = "10%";
+            progressPercent.innerText = "10%";
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+                    
+                    // 2차원 배열 형태로 데이터를 파싱합니다. (Header: 1 옵션)
+                    rawExcelData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+                    
+                    if (rawExcelData.length <= 1) {
+                        alert("파일에 데이터가 존재하지 않거나 형식이 잘못되었습니다.");
+                        return;
+                    }
+
+                    // 이미지 수집 및 정제 비동기 프로세스 가동
+                    await fetchProductImages();
+
+                } catch (err) {
+                    console.error(err);
+                    alert("Excel 파싱 중 문제가 발생했습니다. 확장자 및 내부 데이터를 확인해 주세요.");
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        });
+
+        // 비동기 이미지 데이터 병렬 추출 코어 함수
+        async function fetchProductImages() {
+            processedItems = [];
+            // 헤더 로우를 제외한 실제 데이터 배열 추출 (2번째 줄부터 끝까지)
+            const rowsToProcess = rawExcelData.slice(1);
+            const totalRows = rowsToProcess.length;
+
+            progressStatus.innerText = `총 ${totalRows}개의 품목 데이터를 처리 개시합니다...`;
+            progressBar.style.width = "15%";
+            progressPercent.innerText = "15%";
+
+            const useProxy = document.getElementById('useProxy').checked;
+            const proxyPrefix = document.getElementById('proxyUrl').value.trim();
+
+            // 제어된 병렬 처리 구문 (제한된 Concurrency 배치 기법 구현)
+            for (let i = 0; i < totalRows; i += CONCURRENCY_LIMIT) {
+                const batch = rowsToProcess.slice(i, i + CONCURRENCY_LIMIT);
+                
+                await Promise.all(batch.map(async (row, batchIdx) => {
+                    const globalIdx = i + batchIdx;
+                    
+                    // 엑셀 인덱스 맵핑 법칙 정의:
+                    // B: Media Type(index 1), C: Area(index 2), D: Item Number(index 3), H: SSD(index 7), I: EDS(index 8)
+                    const mediaType = row[1] ? String(row[1]).trim() : '';
+                    const area = row[2] ? String(row[2]).trim() : '';
+                    let artNo = row[3] ? String(row[3]).trim() : '';
+                    const ssd = row[7] ? String(row[7]).trim() : '';
+                    const eds = row[8] ? String(row[8]).trim() : '';
+
+                    let paddedArtNo = '';
+                    let imageUrl = 'No Image';
+                    let statusText = 'Success';
+
+                    if (artNo && artNo.length >= 6 && artNo.length <= 8) {
+                        // VBA의 Right("00000000" & artNo, 8)과 완벽 대응하는 패딩 기법
+                        paddedArtNo = artNo.padStart(8, '0');
+                        
+                        let targetUrl = `https://sik.search.blue.cdtapps.com/kr/ko/search-box?q=${paddedArtNo}`;
+                        if (useProxy && proxyPrefix) {
+                            targetUrl = proxyPrefix + encodeURIComponent(targetUrl);
+                        }
+
+                        try {
+                            const res = await fetch(targetUrl);
+                            if (res.ok) {
+                                const responseText = await res.text();
+                                
+                                // VBA의 문자열 검색 메커니즘을 동일하게 재현한 IndexOf 파싱 기법
+                                const startPos = responseText.indexOf('"https');
+                                if (startPos !== -1) {
+                                    const endPos = responseText.indexOf('"', startPos + 1);
+                                    if (endPos !== -1) {
+                                        let extractedUrl = responseText.substring(startPos + 1, endPos);
+                                        // JSON 이스케이프 슬래시 제거 처리 (\/ -> /)
+                                        imageUrl = extractedUrl.replace(/\\\//g, '/');
+                                    }
+                                }
+                            } else {
+                                imageUrl = 'Network Error';
+                            }
+                        } catch (error) {
+                            console.error(error);
+                            imageUrl = 'Network Error';
+                        }
+                    } else if (artNo !== '') {
+                        imageUrl = 'Invalid Number';
+                    }
+
+                    // 내부 가상 모델 어레이에 푸시
+                    processedItems.push({
+                        mediaType,
+                        area,
+                        itemNumber: paddedArtNo || artNo || 'Empty',
+                        imageUrl,
+                        ssd,
+                        eds
+                    });
+                }));
+
+                // 진행바 업데이트 UI 연동 (VBA의 DoEvents 역할을 대체함)
+                const currentProgress = Math.min(15 + Math.floor((i / totalRows) * 85), 100);
+                progressBar.style.width = `${currentProgress}%`;
+                progressPercent.innerText = `${currentProgress}%`;
+                progressStatus.innerText = `이미지 매핑 및 가공 처리 중: (${Math.min(i + CONCURRENCY_LIMIT, totalRows)} / ${totalRows})`;
+            }
+
+            // 완료 후 필터 영역 활성화 및 렌더링 가동
+            progressStatus.innerText = "🎉 모든 데이터 가공처리가 완료되었습니다!";
+            progressBar.style.width = "100%";
+            progressPercent.innerText = "100%";
+            
+            filterPanel.classList.remove('hidden');
+            outputContainer.classList.remove('hidden');
+            
+            // 초기 전체 화면 렌더링 실행
+            applyFilterAndRender();
+        }
+
+        // 필터 변경 시 이벤트 리스너 통합 등록
+        [searchMediaType, searchArea, searchArtNo].forEach(input => {
+            input.addEventListener('input', applyFilterAndRender);
+        });
+
+        // 대시보드 필터 가동 및 화면 갱신 핵심 로직
+        function applyFilterAndRender() {
+            const mFilter = searchMediaType.value.toLowerCase().trim();
+            const aFilter = searchArea.value.toLowerCase().trim();
+            const noFilter = searchArtNo.value.trim();
+
+            // 상호 필터링 조건 (AND 조건) 결합 스크리닝
+            const filtered = processedItems.filter(item => {
+                const matchMedia = item.mediaType.toLowerCase().includes(mFilter);
+                const matchArea = item.area.toLowerCase().includes(aFilter);
+                const matchNo = item.itemNumber.includes(noFilter);
+                return matchMedia && matchArea && matchNo;
+            });
+
+            // 카운터 스태츠 보드 업데이트
+            counterDisplay.innerText = `전체: ${processedItems.length}행 | 필터 결과: ${filtered.length}행`;
+
+            // 1. 데스크톱용 테이블 바인딩 파트
+            let desktopHtml = '';
+            // 2. 모바일용 카드 바인딩 파트
+            let mobileHtml = '';
+
+            filtered.forEach(item => {
+                // 이미지 셀 내부 HTML 구성 처리 정의
+                let imgCellContent = '';
+                if (item.imageUrl.startsWith('http')) {
+                    imgCellContent = `
+                        <div class="flex justify-center">
+                            <img src="${item.imageUrl}" alt="제품 이미지" class="h-16 w-16 object-contain rounded border border-slate-200 bg-slate-50 cursor-zoom-in hover:scale-110 transition-transform" onclick="window.open('${item.imageUrl}', '_blank')">
+                        </div>`;
+                } else {
+                    // 특수 상태 텍스트 배지 시각화
+                    const badgeColor = item.imageUrl === 'No Image' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-800';
+                    imgCellContent = `<span class="px-2 py-1 text-xs font-medium rounded-full ${badgeColor}">${item.imageUrl}</span>`;
+                }
+
+                // 데스크톱 열 조립
+                desktopHtml += `
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="p-3 font-medium text-slate-700">${item.mediaType || '-'}</td>
+                        <td class="p-3 text-slate-600">${item.area || '-'}</td>
+                        <td class="p-3 font-mono font-semibold text-slate-900">${item.itemNumber}</td>
+                        <td class="p-3 text-center">${imgCellContent}</td>
+                        <td class="p-3 text-slate-600">${item.ssd || '-'}</td>
+                        <td class="p-3 text-slate-600">${item.eds || '-'}</td>
+                    </tr>
+                `;
+
+                // 모바일 최적화 레이아웃 조립 (카드 섹션화)
+                mobileHtml += `
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                        <div class="flex justify-between items-start border-b pb-2">
+                            <div>
+                                <span class="text-xs bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">${item.mediaType || 'No Media'}</span>
+                                <h4 class="text-sm font-bold text-slate-900 mt-1">품번: ${item.itemNumber}</h4>
+                            </div>
+                            <div class="text-xs text-right">
+                                <span class="block text-slate-400">Area</span>
+                                <span class="font-semibold text-slate-700">${item.area || '-'}</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 items-center">
+                            <div class="col-span-1 flex justify-start">
+                                ${imgCellContent}
+                            </div>
+                            <div class="col-span-2 text-xs space-y-1 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">SSD:</span>
+                                    <span class="font-medium text-slate-700">${item.ssd || '-'}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">EDS:</span>
+                                    <span class="font-medium text-slate-700">${item.eds || '-'}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // 화면 최종 드로우 공정 (데이터가 없을 때 예외 대안 탑재)
+            if (filtered.length === 0) {
+                desktopTableBody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400 bg-slate-50">필터 조건과 일치하는 데이터 행이 존재하지 않습니다.</td></tr>`;
+                mobileCardGrid.innerHTML = `<div class="p-8 text-center text-slate-400 bg-white rounded-xl border">필터 조건과 일치하는 데이터가 없습니다.</div>`;
+            } else {
+                desktopTableBody.innerHTML = desktopHtml;
+                mobileCardGrid.innerHTML = mobileHtml;
+            }
+        }
+    </script>
+</body>
+</html>
