@@ -20,7 +20,7 @@
             <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
                 📦 <span>FIXA 데이터 이미지 뷰어</span>
             </h1>
-            <div class="text-xs text-slate-400">Final Release (EDS Warning UI)</div>
+            <div class="text-xs text-slate-400">Final Release (EDS Filter & Warning)</div>
         </div>
     </header>
 
@@ -39,18 +39,36 @@
                 <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">🔍 데이터 필터링</h3>
                 <div class="text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-md font-bold border border-blue-100" id="counterDisplay"></div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Media Type</label>
-                    <input type="text" id="searchMediaType" placeholder="예: vignette" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    <input type="text" id="searchMediaType" placeholder="예: vignette" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Area</label>
-                    <input type="text" id="searchArea" placeholder="예: bv002" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    <input type="text" id="searchArea" placeholder="예: bv002" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">제품 번호</label>
-                    <input type="text" id="searchArtNo" placeholder="예: 0962" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                    <input type="text" id="searchArtNo" placeholder="예: 30238538" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">EDS 필터</label>
+                    <div class="flex bg-slate-100 p-1.5 rounded-lg border border-slate-200 h-[42px]">
+                        <label class="flex-1 text-center cursor-pointer h-full">
+                            <input type="radio" name="edsFilter" value="ALL" class="peer hidden" checked>
+                            <div class="h-full flex items-center justify-center text-xs font-bold text-slate-500 peer-checked:bg-white peer-checked:text-blue-600 peer-checked:shadow-sm rounded-md transition-all">ALL</div>
+                        </label>
+                        <label class="flex-1 text-center cursor-pointer h-full">
+                            <input type="radio" name="edsFilter" value="-" class="peer hidden">
+                            <div class="h-full flex items-center justify-center text-xs font-bold text-slate-500 peer-checked:bg-white peer-checked:text-blue-600 peer-checked:shadow-sm rounded-md transition-all">-</div>
+                        </label>
+                        <label class="flex-1 text-center cursor-pointer h-full">
+                            <input type="radio" name="edsFilter" value="PAST" class="peer hidden">
+                            <div class="h-full flex items-center justify-center text-xs font-bold text-slate-500 peer-checked:bg-rose-500 peer-checked:text-white peer-checked:shadow-sm rounded-md transition-all">PAST</div>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,15 +102,7 @@
     <script>
         let serverData = [];
         const RENDER_LIMIT = 650;
-
-        // 오늘 날짜를 YYYYMMDD 형태의 문자열로 반환하는 함수
-        function getTodayYYYYMMDD() {
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const day = String(today.getDate()).padStart(2, '0');
-            return `${year}${month}${day}`;
-        }
+        const EDS_THRESHOLD = '20260701'; // 명시된 고정 날짜 기준점
 
         document.addEventListener('DOMContentLoaded', async () => {
             try {
@@ -119,6 +129,7 @@
             }
         });
 
+        // 텍스트 타이핑 디바운스
         let filterTimeout;
         function debouncedFilter() {
             clearTimeout(filterTimeout);
@@ -129,16 +140,34 @@
             document.getElementById(id).addEventListener('input', debouncedFilter);
         });
 
+        // EDS 라디오 토글 버튼 변경 즉시 반영
+        document.querySelectorAll('input[name="edsFilter"]').forEach(radio => {
+            radio.addEventListener('change', applyFilterAndRender);
+        });
+
         function applyFilterAndRender() {
             const mFilter = document.getElementById('searchMediaType').value.toLowerCase().trim();
             const aFilter = document.getElementById('searchArea').value.toLowerCase().trim();
             const noFilter = document.getElementById('searchArtNo').value.trim();
-            const todayYYYYMMDD = getTodayYYYYMMDD();
+            const edsToggleVal = document.querySelector('input[name="edsFilter"]:checked').value;
 
             const filtered = serverData.filter(item => {
-                return item.mediaType.toLowerCase().includes(mFilter) && 
-                       item.area.toLowerCase().includes(aFilter) && 
-                       item.itemNumber.includes(noFilter);
+                // 1. 텍스트 필터 조건 매칭
+                const matchMedia = item.mediaType.toLowerCase().includes(mFilter);
+                const matchArea = item.area.toLowerCase().includes(aFilter);
+                const matchNo = item.itemNumber.includes(noFilter);
+                
+                // 2. EDS 토글 필터 조건 매칭
+                let matchEds = true;
+                if (edsToggleVal === '-') {
+                    // 값이 없거나 공백인 경우만
+                    matchEds = !item.eds || item.eds.trim() === '';
+                } else if (edsToggleVal === 'PAST') {
+                    // 8자리 숫자이면서 20260701 이하인 경우만
+                    matchEds = item.eds && item.eds.length === 8 && !isNaN(item.eds) && item.eds <= EDS_THRESHOLD;
+                }
+
+                return matchMedia && matchArea && matchNo && matchEds;
             });
 
             const limitedResults = filtered.slice(0, RENDER_LIMIT);
@@ -160,10 +189,10 @@
                     imgCellContent = `<div class="flex justify-center items-center h-28 w-full"><span class="px-3 py-1 text-xs font-bold rounded-md bg-slate-100 text-slate-500 border border-slate-200">No Image</span></div>`;
                 }
 
-                // EDS 날짜 경고 로직
+                // EDS 날짜 경고 로직 (20260701 이하 조건)
                 let edsDisplay = item.eds || '-';
                 if (item.eds && item.eds.length === 8 && !isNaN(item.eds)) {
-                    if (item.eds < todayYYYYMMDD) {
+                    if (item.eds <= EDS_THRESHOLD) {
                         edsDisplay = `<span class="bg-rose-500 text-white font-bold px-2.5 py-0.5 rounded-full text-[11px] shadow-sm tracking-wide">${item.eds}</span>`;
                     }
                 }
