@@ -1,0 +1,35 @@
+name: Update FIXA Data to JSON
+
+on:
+  push:
+    paths:
+      - 'FIXA data.xlsx'  # 이 엑셀 파일이 업데이트될 때만 작동
+  workflow_dispatch:      # 수동으로 버튼 눌러서 실행할 수 있는 옵션
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install xlsx
+
+      - name: Run Build Script (엑셀 분석 및 이미지 수집)
+        run: node build.js
+
+      - name: Commit and Push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "🤖 Auto-updated data.json with new Excel data" || echo "No changes to commit"
+          git push
