@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIXA 제품 이미지 대시보드</title>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .table-container { max-height: 70vh; overflow-y: auto; }
@@ -12,8 +11,6 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
@@ -23,45 +20,25 @@
             <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
                 📦 <span>FIXA 데이터 이미지 뷰어</span>
             </h1>
-            <div class="text-xs text-slate-400">⚡ Ultimate Opt. (Lazy Load + IndexedDB)</div>
+            <div class="text-xs text-slate-400">⚡ Server-Side JSON Edition</div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto p-4 space-y-6">
-
-        <div id="initialLoadingStatus" class="flex flex-col items-center justify-center p-16 bg-white rounded-xl shadow-sm border border-slate-200 mt-10">
+        
+        <div id="loadingStatus" class="flex flex-col items-center justify-center p-16 bg-white rounded-xl shadow-sm border border-slate-200 mt-10">
             <svg class="animate-spin h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <h2 class="text-lg font-bold text-slate-800">데이터 자동 동기화 중...</h2>
-            <p class="text-sm text-slate-500 mt-1">서버에서 최신 FIXA 엑셀 데이터를 불러오고 있습니다.</p>
-        </div>
-
-        <div id="proxySettingsContainer" class="hidden bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-            <details class="group">
-                <summary class="list-none flex justify-between items-center font-semibold text-sm text-slate-700 cursor-pointer select-none">
-                    <span>⚙️ 네트워크 설정 (이미지가 안 보일 때만 켜세요)</span>
-                    <span class="transition group-open:rotate-180">▼</span>
-                </summary>
-                <div class="mt-3 space-y-2 text-xs text-slate-600 border-t pt-2">
-                    <div class="flex items-center gap-2 mt-1">
-                        <input type="checkbox" id="useProxy" checked class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
-                        <label for="useProxy" class="font-medium text-slate-700">프록시 우회 활성화 (CORS 방지)</label>
-                    </div>
-                    <input type="text" id="proxyUrl" value="https://api.allorigins.win/raw?url=" 
-                           class="w-full p-2 border border-slate-200 rounded bg-slate-50 text-slate-600 focus:outline-none hidden">
-                </div>
-            </details>
+            <h2 class="text-lg font-bold text-slate-800">서버 데이터 불러오는 중...</h2>
+            <p class="text-sm text-slate-500 mt-1">완성된 데이터를 가져오고 있습니다 (약 0.1초 소요)</p>
         </div>
 
         <div id="filterPanel" class="hidden bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-3 gap-2">
                 <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">🔍 데이터 필터링</h3>
-                <div class="flex items-center gap-2">
-                    <button id="clearCacheBtn" class="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-600 px-2 py-1 rounded transition-colors border border-slate-200">🗑️ 캐시 초기화</button>
-                    <div class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-bold border border-blue-100" id="counterDisplay"></div>
-                </div>
+                <div class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-bold border border-blue-100" id="counterDisplay"></div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
@@ -103,163 +80,34 @@
     </main>
 
     <script>
-        /* =========================================
-           1. 브라우저 영구 캐시 (IndexedDB) 셋업
-           ========================================= */
-        const DB_NAME = 'FixaImageCacheDB';
-        const STORE_NAME = 'images';
-        const memoryCache = new Map(); // 빠른 접근을 위한 메모리 캐시
-
-        const dbPromise = new Promise((resolve, reject) => {
-            const req = indexedDB.open(DB_NAME, 1);
-            req.onupgradeneeded = e => e.target.result.createObjectStore(STORE_NAME);
-            req.onsuccess = e => resolve(e.target.result);
-            req.onerror = e => reject(e.target.error);
-        });
-
-        async function saveImgToDB(itemNo, url) {
-            const db = await dbPromise;
-            const tx = db.transaction(STORE_NAME, 'readwrite');
-            tx.objectStore(STORE_NAME).put(url, itemNo);
-        }
-
-        async function getImgFromDB(itemNo) {
-            const db = await dbPromise;
-            return new Promise((resolve) => {
-                const tx = db.transaction(STORE_NAME, 'readonly');
-                const req = tx.objectStore(STORE_NAME).get(itemNo);
-                req.onsuccess = () => resolve(req.result);
-                req.onerror = () => resolve(null);
-            });
-        }
-
-        document.getElementById('clearCacheBtn').addEventListener('click', async () => {
-            if(confirm("모든 저장된 이미지 캐시를 삭제하고 새로고침 하시겠습니까?")) {
-                const db = await dbPromise;
-                db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).clear();
-                location.reload();
-            }
-        });
-
-        /* =========================================
-           2. 뷰포트 지연 로딩 (Intersection Observer)
-           ========================================= */
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const container = entry.target;
-                    const itemNo = container.dataset.item;
-                    observer.unobserve(container); // 한 번 노출되면 감시 중단
-                    loadImageForContainer(itemNo, container); // 이미지 호출 로직 실행
-                }
-            });
-        }, { rootMargin: '100px' }); // 화면에 보이기 100px 전부터 미리 로딩 시작
-
-        async function loadImageForContainer(itemNo, container) {
-            if (itemNo === 'Empty') { updateImageDOM(container, 'No Image'); return; }
-
-            // 1단계: 메모리 캐시 확인 (0초 로딩)
-            if (memoryCache.has(itemNo)) {
-                updateImageDOM(container, memoryCache.get(itemNo)); return;
-            }
-
-            // 2단계: 브라우저 영구 캐시(IndexedDB) 확인 (0.01초 로딩)
-            const cachedUrl = await getImgFromDB(itemNo);
-            if (cachedUrl) {
-                memoryCache.set(itemNo, cachedUrl);
-                updateImageDOM(container, cachedUrl); return;
-            }
-
-            // 3단계: 진짜 처음 보는 제품이면 API 통신 (실제 로딩 발생)
-            const useProxy = document.getElementById('useProxy').checked;
-            const proxyPrefix = document.getElementById('proxyUrl').value.trim();
-            let targetUrl = `https://sik.search.blue.cdtapps.com/kr/ko/search-box?q=${itemNo}`;
-            if (useProxy && proxyPrefix) targetUrl = proxyPrefix + encodeURIComponent(targetUrl);
-
-            let imgUrl = 'No Image';
-            try {
-                const res = await fetch(targetUrl);
-                if (res.ok) {
-                    const data = await res.json();
-                    imgUrl = findBestImage(data) || 'No Image';
-                } else { imgUrl = 'Network Error'; }
-            } catch (e) { imgUrl = 'Network Error'; }
-
-            // 가져온 결과 저장 및 화면 표시
-            memoryCache.set(itemNo, imgUrl);
-            saveImgToDB(itemNo, imgUrl);
-            updateImageDOM(container, imgUrl);
-        }
-
-        function updateImageDOM(container, imgUrl) {
-            container.className = "flex justify-center items-center h-16 w-16 mx-auto"; 
-            if (imgUrl.startsWith('http')) {
-                container.innerHTML = `<img src="${imgUrl}" class="h-16 w-16 object-contain rounded bg-white cursor-zoom-in hover:scale-105 transition-transform border border-slate-200 shadow-sm" onclick="window.open('${imgUrl}', '_blank')">`;
-            } else {
-                const badgeColor = imgUrl === 'No Image' ? 'bg-slate-100 text-slate-500 border border-slate-200' : 'bg-rose-50 text-rose-500 border border-rose-100';
-                container.innerHTML = `<span class="px-2 py-1 text-[9px] font-bold rounded-md ${badgeColor}">${imgUrl}</span>`;
-            }
-        }
-
-        /* =========================================
-           3. 코어 로직 (엑셀 파싱 및 필터링)
-           ========================================= */
-        let rawExcelData = [];
-        let processedItems = [];
+        let serverData = [];
 
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                const response = await fetch('./FIXA data.xlsx');
-                if (!response.ok) throw new Error("파일을 찾을 수 없습니다.");
-
-                const arrayBuffer = await response.arrayBuffer();
-                const data = new Uint8Array(arrayBuffer);
-                const workbook = XLSX.read(data, { type: 'array' });
+                // 🚀 브라우저에서는 완성된 data.json만 0.1초만에 가져옴
+                // timestamp 쿼리로 브라우저 캐시 무시하고 항상 최신본을 가져오게 설정
+                const response = await fetch('./data.json?t=' + new Date().getTime());
+                if (!response.ok) throw new Error("데이터를 아직 생성 중이거나 찾을 수 없습니다.");
                 
-                const firstSheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[firstSheetName];
+                serverData = await response.json();
                 
-                rawExcelData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-                if (rawExcelData.length <= 1) throw new Error("데이터가 없습니다.");
-
-                document.getElementById('initialLoadingStatus').classList.add('hidden');
-                document.getElementById('proxySettingsContainer').classList.remove('hidden');
+                document.getElementById('loadingStatus').classList.add('hidden');
+                document.getElementById('filterPanel').classList.remove('hidden');
+                document.getElementById('outputContainer').classList.remove('hidden');
                 
-                processExcelDataImmediately();
+                applyFilterAndRender();
             } catch (err) {
                 console.error(err);
-                document.getElementById('initialLoadingStatus').innerHTML = `
+                document.getElementById('loadingStatus').innerHTML = `
                     <div class="text-center">
-                        <div class="bg-red-100 text-red-600 p-3 rounded-full inline-block mb-3">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <div class="bg-amber-100 text-amber-600 p-3 rounded-full inline-block mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                         </div>
-                        <h2 class="text-lg font-bold text-slate-800 mb-1">데이터 로드 실패</h2>
-                        <p class="text-sm text-slate-500">깃허브 리포지토리에 <b>FIXA data.xlsx</b> 파일이 업로드되어 있는지 확인해주세요.</p>
+                        <h2 class="text-lg font-bold text-slate-800 mb-1">데이터 대기 중</h2>
+                        <p class="text-sm text-slate-500">서버가 엑셀을 처리하고 있습니다. 약 1분 뒤에 새로고침 해주세요.</p>
                     </div>`;
             }
         });
-
-        function processExcelDataImmediately() {
-            processedItems = [];
-            const rowsToProcess = rawExcelData.slice(1);
-
-            rowsToProcess.forEach(row => {
-                const mediaType = row[1] ? String(row[1]).trim() : '';
-                const area = row[2] ? String(row[2]).trim() : '';
-                let artNo = row[3] ? String(row[3]).trim() : '';
-                const ssd = row[7] ? String(row[7]).trim() : '';
-                const eds = row[8] ? String(row[8]).trim() : '';
-
-                let paddedArtNo = artNo;
-                if (artNo && artNo.length >= 6 && artNo.length <= 8) paddedArtNo = artNo.padStart(8, '0');
-
-                processedItems.push({ mediaType, area, itemNumber: paddedArtNo || 'Empty', ssd, eds });
-            });
-
-            document.getElementById('filterPanel').classList.remove('hidden');
-            document.getElementById('outputContainer').classList.remove('hidden');
-            applyFilterAndRender();
-        }
 
         ['searchMediaType', 'searchArea', 'searchArtNo'].forEach(id => {
             document.getElementById(id).addEventListener('input', applyFilterAndRender);
@@ -270,23 +118,24 @@
             const aFilter = document.getElementById('searchArea').value.toLowerCase().trim();
             const noFilter = document.getElementById('searchArtNo').value.trim();
 
-            const filtered = processedItems.filter(item => {
+            const filtered = serverData.filter(item => {
                 return item.mediaType.toLowerCase().includes(mFilter) && 
                        item.area.toLowerCase().includes(aFilter) && 
                        item.itemNumber.includes(noFilter);
             });
 
-            document.getElementById('counterDisplay').innerText = `전체 ${processedItems.length}행 중 ${filtered.length}개 검색됨`;
+            document.getElementById('counterDisplay').innerText = `전체 ${serverData.length}행 중 ${filtered.length}개 표시됨`;
 
             let desktopHtml = '';
             let mobileHtml = '';
 
             filtered.forEach(item => {
-                // 초기에 빈 스켈레톤 마크업만 투입 (unloaded 클래스 부여)
-                let imgCellContent = `
-                    <div class="img-container unloaded flex justify-center items-center h-16 w-16 bg-slate-50 border border-slate-200 rounded mx-auto" data-item="${item.itemNumber}">
-                        <div class="h-1.5 w-6 bg-slate-300 rounded animate-pulse"></div>
-                    </div>`;
+                let imgCellContent = '';
+                if (item.imageUrl && item.imageUrl.startsWith('http')) {
+                    imgCellContent = `<img src="${item.imageUrl}" loading="lazy" class="h-16 w-16 object-contain rounded bg-white cursor-zoom-in hover:scale-105 transition-transform border border-slate-200 shadow-sm mx-auto" onclick="window.open('${item.imageUrl}', '_blank')">`;
+                } else {
+                    imgCellContent = `<div class="flex justify-center items-center h-16 w-16 mx-auto"><span class="px-2 py-1 text-[9px] font-bold rounded-md bg-slate-100 text-slate-500 border border-slate-200">No Image</span></div>`;
+                }
 
                 desktopHtml += `
                     <tr class="hover:bg-slate-50 transition-colors">
@@ -315,40 +164,12 @@
             });
 
             if (filtered.length === 0) {
-                document.getElementById('desktopTableBody').innerHTML = `<tr><td colspan="6" class="p-10 text-center text-slate-400 bg-slate-50/50">검색된 데이터가 없습니다.</td></tr>`;
-                document.getElementById('mobileCardGrid').innerHTML = `<div class="p-10 text-center text-slate-400 bg-white rounded-xl border border-slate-200 shadow-sm">검색된 데이터가 없습니다.</div>`;
+                document.getElementById('desktopTableBody').innerHTML = `<tr><td colspan="6" class="p-10 text-center text-slate-400 bg-slate-50/50">데이터가 없습니다.</td></tr>`;
+                document.getElementById('mobileCardGrid').innerHTML = `<div class="p-10 text-center text-slate-400 bg-white rounded-xl border border-slate-200 shadow-sm">데이터가 없습니다.</div>`;
             } else {
                 document.getElementById('desktopTableBody').innerHTML = desktopHtml;
                 document.getElementById('mobileCardGrid').innerHTML = mobileHtml;
-                
-                // 화면 렌더링 직후 생성된 스켈레톤 요소들을 Observer에 등록
-                document.querySelectorAll('.img-container.unloaded').forEach(el => {
-                    el.classList.remove('unloaded');
-                    imageObserver.observe(el);
-                });
             }
-        }
-
-        // JSON 탐색 (변경 없음)
-        function findBestImage(obj) {
-            let bestUrl = null;
-            function traverse(o) {
-                if (!o || typeof o !== 'object') return;
-                for (let key in o) {
-                    if (typeof o[key] === 'string') {
-                        let val = o[key].toLowerCase();
-                        if (val.match(/\.(jpg|jpeg|png|webp|avif)(\?.*)?$/) && !val.includes('.svg')) {
-                            let actualUrl = o[key];
-                            if (actualUrl.startsWith('//')) actualUrl = 'https:' + actualUrl;
-                            else if (actualUrl.startsWith('/')) actualUrl = 'https://www.ikea.com' + actualUrl;
-                            if (!bestUrl) bestUrl = actualUrl;
-                            else if (actualUrl.includes('s5') || actualUrl.includes('main')) bestUrl = actualUrl;
-                        }
-                    } else if (typeof o[key] === 'object') traverse(o[key]);
-                }
-            }
-            traverse(obj);
-            return bestUrl;
         }
     </script>
 </body>
