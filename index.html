@@ -20,7 +20,7 @@
             <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
                 📦 <span>FIXA 데이터 이미지 뷰어</span>
             </h1>
-            <div class="text-xs text-slate-400">Final Release (Max 650 Rows)</div>
+            <div class="text-xs text-slate-400">Final Release (EDS Warning UI)</div>
         </div>
     </header>
 
@@ -83,11 +83,19 @@
 
     <script>
         let serverData = [];
-        const RENDER_LIMIT = 650; // 네가 지정한 최대 렌더링 한계치
+        const RENDER_LIMIT = 650;
+
+        // 오늘 날짜를 YYYYMMDD 형태의 문자열로 반환하는 함수
+        function getTodayYYYYMMDD() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}${month}${day}`;
+        }
 
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                // 브라우저 캐시 무시하고 최신 JSON 로드
                 const response = await fetch('./data.json?t=' + new Date().getTime());
                 if (!response.ok) throw new Error("JSON 낫파운드");
                 
@@ -111,7 +119,6 @@
             }
         });
 
-        // 타이핑 버벅임 방지 (Debounce) 로직: 0.25초 동안 입력이 없어야만 필터링 실행
         let filterTimeout;
         function debouncedFilter() {
             clearTimeout(filterTimeout);
@@ -126,6 +133,7 @@
             const mFilter = document.getElementById('searchMediaType').value.toLowerCase().trim();
             const aFilter = document.getElementById('searchArea').value.toLowerCase().trim();
             const noFilter = document.getElementById('searchArtNo').value.trim();
+            const todayYYYYMMDD = getTodayYYYYMMDD();
 
             const filtered = serverData.filter(item => {
                 return item.mediaType.toLowerCase().includes(mFilter) && 
@@ -133,7 +141,6 @@
                        item.itemNumber.includes(noFilter);
             });
 
-            // 650개 제한 로직 적용
             const limitedResults = filtered.slice(0, RENDER_LIMIT);
             
             let counterText = `전체 ${serverData.length.toLocaleString()}행 중 ${filtered.length.toLocaleString()}개 검색됨`;
@@ -148,10 +155,17 @@
             limitedResults.forEach(item => {
                 let imgCellContent = '';
                 if (item.imageUrl && item.imageUrl.startsWith('http')) {
-                    // PC 뷰 이미지 크기 대폭 확대 (h-28 = 112px)
                     imgCellContent = `<img src="${item.imageUrl}" loading="lazy" class="h-28 w-auto max-w-[200px] object-contain rounded bg-white cursor-zoom-in hover:scale-110 transition-transform shadow-sm border border-slate-200 mx-auto" onclick="window.open('${item.imageUrl}', '_blank')">`;
                 } else {
                     imgCellContent = `<div class="flex justify-center items-center h-28 w-full"><span class="px-3 py-1 text-xs font-bold rounded-md bg-slate-100 text-slate-500 border border-slate-200">No Image</span></div>`;
+                }
+
+                // EDS 날짜 경고 로직
+                let edsDisplay = item.eds || '-';
+                if (item.eds && item.eds.length === 8 && !isNaN(item.eds)) {
+                    if (item.eds < todayYYYYMMDD) {
+                        edsDisplay = `<span class="bg-rose-500 text-white font-bold px-2.5 py-0.5 rounded-full text-[11px] shadow-sm tracking-wide">${item.eds}</span>`;
+                    }
                 }
 
                 desktopHtml += `
@@ -161,10 +175,9 @@
                         <td class="p-3 font-mono font-bold text-slate-900">${item.itemNumber}</td>
                         <td class="p-3 text-center align-middle py-2">${imgCellContent}</td>
                         <td class="p-3 text-slate-600">${item.ssd || '-'}</td>
-                        <td class="p-3 text-slate-600">${item.eds || '-'}</td>
+                        <td class="p-3 align-middle">${edsDisplay}</td>
                     </tr>`;
 
-                // 모바일 뷰 카드 디자인 전면 개편 (이미지 왼쪽 크게 배치)
                 mobileHtml += `
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                         <div class="flex items-center gap-4">
@@ -179,10 +192,10 @@
                                     <span class="text-[10px] bg-slate-100 w-fit px-1.5 py-0.5 rounded text-slate-500 font-bold uppercase truncate max-w-full">${item.mediaType || '-'}</span>
                                     <h4 class="text-lg font-black text-slate-900 leading-none mt-1">${item.itemNumber}</h4>
                                 </div>
-                                <div class="text-xs bg-blue-50/50 p-2 rounded border border-blue-100/50 space-y-1">
+                                <div class="text-xs bg-blue-50/50 p-2 rounded border border-blue-100/50 space-y-1.5">
                                     <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">Area:</span><span class="font-bold text-slate-700 truncate ml-2">${item.area || '-'}</span></div>
                                     <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">SSD:</span><span class="font-bold text-slate-700">${item.ssd || '-'}</span></div>
-                                    <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">EDS:</span><span class="font-bold text-slate-700">${item.eds || '-'}</span></div>
+                                    <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">EDS:</span><span class="font-bold text-slate-700">${edsDisplay}</span></div>
                                 </div>
                             </div>
                         </div>
