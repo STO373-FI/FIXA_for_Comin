@@ -12,7 +12,6 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        /* 스켈레톤 로딩 애니메이션 */
         .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
     </style>
@@ -24,60 +23,58 @@
             <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
                 📦 <span>FIXA 데이터 이미지 뷰어</span>
             </h1>
-            <div class="text-xs text-slate-400">Turbo Cache Edition</div>
+            <div class="text-xs text-slate-400">⚡ Ultimate Opt. (Lazy Load + IndexedDB)</div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto p-4 space-y-6">
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 lg:col-span-2 flex flex-col justify-center">
-                <label class="block text-sm font-semibold text-slate-700 mb-2">데이터 동기화</label>
-                <div class="flex items-center gap-3">
-                    <button id="processBtn" class="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:bg-blue-700 transition-all text-sm whitespace-nowrap flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-                        서버에서 데이터 불러오기
-                    </button>
-                    <span class="text-sm text-slate-500">서버에 업로드된 FIXA data.xlsx 파일을 읽어옵니다.</span>
-                </div>
-            </div>
+        <div id="initialLoadingStatus" class="flex flex-col items-center justify-center p-16 bg-white rounded-xl shadow-sm border border-slate-200 mt-10">
+            <svg class="animate-spin h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <h2 class="text-lg font-bold text-slate-800">데이터 자동 동기화 중...</h2>
+            <p class="text-sm text-slate-500 mt-1">서버에서 최신 FIXA 엑셀 데이터를 불러오고 있습니다.</p>
+        </div>
 
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-                <details class="group">
-                    <summary class="list-none flex justify-between items-center font-semibold text-sm text-slate-700 cursor-pointer select-none">
-                        <span>⚙️ 네트워크 제한 대응 (CORS)</span>
-                        <span class="transition group-open:rotate-180">▼</span>
-                    </summary>
-                    <div class="mt-3 space-y-2 text-xs text-slate-600 border-t pt-2">
-                        <p>이미지가 엑스박스로 뜬다면 활성화하세요.</p>
-                        <div class="flex items-center gap-2 mt-1">
-                            <input type="checkbox" id="useProxy" checked class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
-                            <label for="useProxy" class="font-medium text-slate-700">프록시 서버 활성화</label>
-                        </div>
-                        <input type="text" id="proxyUrl" value="https://api.allorigins.win/raw?url=" 
-                               class="w-full p-2 border border-slate-200 rounded bg-slate-50 text-slate-600 focus:outline-none">
+        <div id="proxySettingsContainer" class="hidden bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+            <details class="group">
+                <summary class="list-none flex justify-between items-center font-semibold text-sm text-slate-700 cursor-pointer select-none">
+                    <span>⚙️ 네트워크 설정 (이미지가 안 보일 때만 켜세요)</span>
+                    <span class="transition group-open:rotate-180">▼</span>
+                </summary>
+                <div class="mt-3 space-y-2 text-xs text-slate-600 border-t pt-2">
+                    <div class="flex items-center gap-2 mt-1">
+                        <input type="checkbox" id="useProxy" checked class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                        <label for="useProxy" class="font-medium text-slate-700">프록시 우회 활성화 (CORS 방지)</label>
                     </div>
-                </details>
-            </div>
+                    <input type="text" id="proxyUrl" value="https://api.allorigins.win/raw?url=" 
+                           class="w-full p-2 border border-slate-200 rounded bg-slate-50 text-slate-600 focus:outline-none hidden">
+                </div>
+            </details>
         </div>
 
         <div id="filterPanel" class="hidden bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-3 gap-2">
                 <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">🔍 데이터 필터링</h3>
-                <div class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-medium" id="counterDisplay"></div>
+                <div class="flex items-center gap-2">
+                    <button id="clearCacheBtn" class="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-600 px-2 py-1 rounded transition-colors border border-slate-200">🗑️ 캐시 초기화</button>
+                    <div class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-bold border border-blue-100" id="counterDisplay"></div>
+                </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Media Type</label>
-                    <input type="text" id="searchMediaType" placeholder="예: vignette" class="w-full p-2 text-sm border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="searchMediaType" placeholder="예: vignette" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Area</label>
-                    <input type="text" id="searchArea" placeholder="예: bv002" class="w-full p-2 text-sm border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="searchArea" placeholder="예: bv002" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">제품 번호</label>
-                    <input type="text" id="searchArtNo" placeholder="검색" class="w-full p-2 text-sm border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="searchArtNo" placeholder="번호 입력" class="w-full p-2.5 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
             </div>
         </div>
@@ -106,27 +103,111 @@
     </main>
 
     <script>
+        /* =========================================
+           1. 브라우저 영구 캐시 (IndexedDB) 셋업
+           ========================================= */
+        const DB_NAME = 'FixaImageCacheDB';
+        const STORE_NAME = 'images';
+        const memoryCache = new Map(); // 빠른 접근을 위한 메모리 캐시
+
+        const dbPromise = new Promise((resolve, reject) => {
+            const req = indexedDB.open(DB_NAME, 1);
+            req.onupgradeneeded = e => e.target.result.createObjectStore(STORE_NAME);
+            req.onsuccess = e => resolve(e.target.result);
+            req.onerror = e => reject(e.target.error);
+        });
+
+        async function saveImgToDB(itemNo, url) {
+            const db = await dbPromise;
+            const tx = db.transaction(STORE_NAME, 'readwrite');
+            tx.objectStore(STORE_NAME).put(url, itemNo);
+        }
+
+        async function getImgFromDB(itemNo) {
+            const db = await dbPromise;
+            return new Promise((resolve) => {
+                const tx = db.transaction(STORE_NAME, 'readonly');
+                const req = tx.objectStore(STORE_NAME).get(itemNo);
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => resolve(null);
+            });
+        }
+
+        document.getElementById('clearCacheBtn').addEventListener('click', async () => {
+            if(confirm("모든 저장된 이미지 캐시를 삭제하고 새로고침 하시겠습니까?")) {
+                const db = await dbPromise;
+                db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).clear();
+                location.reload();
+            }
+        });
+
+        /* =========================================
+           2. 뷰포트 지연 로딩 (Intersection Observer)
+           ========================================= */
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const container = entry.target;
+                    const itemNo = container.dataset.item;
+                    observer.unobserve(container); // 한 번 노출되면 감시 중단
+                    loadImageForContainer(itemNo, container); // 이미지 호출 로직 실행
+                }
+            });
+        }, { rootMargin: '100px' }); // 화면에 보이기 100px 전부터 미리 로딩 시작
+
+        async function loadImageForContainer(itemNo, container) {
+            if (itemNo === 'Empty') { updateImageDOM(container, 'No Image'); return; }
+
+            // 1단계: 메모리 캐시 확인 (0초 로딩)
+            if (memoryCache.has(itemNo)) {
+                updateImageDOM(container, memoryCache.get(itemNo)); return;
+            }
+
+            // 2단계: 브라우저 영구 캐시(IndexedDB) 확인 (0.01초 로딩)
+            const cachedUrl = await getImgFromDB(itemNo);
+            if (cachedUrl) {
+                memoryCache.set(itemNo, cachedUrl);
+                updateImageDOM(container, cachedUrl); return;
+            }
+
+            // 3단계: 진짜 처음 보는 제품이면 API 통신 (실제 로딩 발생)
+            const useProxy = document.getElementById('useProxy').checked;
+            const proxyPrefix = document.getElementById('proxyUrl').value.trim();
+            let targetUrl = `https://sik.search.blue.cdtapps.com/kr/ko/search-box?q=${itemNo}`;
+            if (useProxy && proxyPrefix) targetUrl = proxyPrefix + encodeURIComponent(targetUrl);
+
+            let imgUrl = 'No Image';
+            try {
+                const res = await fetch(targetUrl);
+                if (res.ok) {
+                    const data = await res.json();
+                    imgUrl = findBestImage(data) || 'No Image';
+                } else { imgUrl = 'Network Error'; }
+            } catch (e) { imgUrl = 'Network Error'; }
+
+            // 가져온 결과 저장 및 화면 표시
+            memoryCache.set(itemNo, imgUrl);
+            saveImgToDB(itemNo, imgUrl);
+            updateImageDOM(container, imgUrl);
+        }
+
+        function updateImageDOM(container, imgUrl) {
+            container.className = "flex justify-center items-center h-16 w-16 mx-auto"; 
+            if (imgUrl.startsWith('http')) {
+                container.innerHTML = `<img src="${imgUrl}" class="h-16 w-16 object-contain rounded bg-white cursor-zoom-in hover:scale-105 transition-transform border border-slate-200 shadow-sm" onclick="window.open('${imgUrl}', '_blank')">`;
+            } else {
+                const badgeColor = imgUrl === 'No Image' ? 'bg-slate-100 text-slate-500 border border-slate-200' : 'bg-rose-50 text-rose-500 border border-rose-100';
+                container.innerHTML = `<span class="px-2 py-1 text-[9px] font-bold rounded-md ${badgeColor}">${imgUrl}</span>`;
+            }
+        }
+
+        /* =========================================
+           3. 코어 로직 (엑셀 파싱 및 필터링)
+           ========================================= */
         let rawExcelData = [];
         let processedItems = [];
-        
-        // ✨ 제공해주신 훌륭한 코드에서 이식한 캐싱 시스템 도입
-        const imageCache = new Map();
 
-        const processBtn = document.getElementById('processBtn');
-        const filterPanel = document.getElementById('filterPanel');
-        const outputContainer = document.getElementById('outputContainer');
-        const desktopTableBody = document.getElementById('desktopTableBody');
-        const mobileCardGrid = document.getElementById('mobileCardGrid');
-        const counterDisplay = document.getElementById('counterDisplay');
-
-        const searchMediaType = document.getElementById('searchMediaType');
-        const searchArea = document.getElementById('searchArea');
-        const searchArtNo = document.getElementById('searchArtNo');
-
-        processBtn.addEventListener('click', async () => {
-            processBtn.disabled = true;
-            processBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> 엑셀 파싱 중...`;
-
+        document.addEventListener('DOMContentLoaded', async () => {
             try {
                 const response = await fetch('./FIXA data.xlsx');
                 if (!response.ok) throw new Error("파일을 찾을 수 없습니다.");
@@ -139,27 +220,24 @@
                 const worksheet = workbook.Sheets[firstSheetName];
                 
                 rawExcelData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+                if (rawExcelData.length <= 1) throw new Error("데이터가 없습니다.");
+
+                document.getElementById('initialLoadingStatus').classList.add('hidden');
+                document.getElementById('proxySettingsContainer').classList.remove('hidden');
                 
-                if (rawExcelData.length <= 1) {
-                    alert("파일에 데이터가 없습니다.");
-                    resetBtn(); return;
-                }
-
-                // ✨ 블로킹(멈춤) 없이 즉시 데이터 구조화 후 화면 오픈!
                 processExcelDataImmediately();
-
             } catch (err) {
                 console.error(err);
-                alert("엑셀 파일을 불러오지 못했습니다. 깃허브 리포지토리에 'FIXA data.xlsx' 파일이 정확한 이름으로 업로드되어 있는지 확인해주세요.");
-                resetBtn();
+                document.getElementById('initialLoadingStatus').innerHTML = `
+                    <div class="text-center">
+                        <div class="bg-red-100 text-red-600 p-3 rounded-full inline-block mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h2 class="text-lg font-bold text-slate-800 mb-1">데이터 로드 실패</h2>
+                        <p class="text-sm text-slate-500">깃허브 리포지토리에 <b>FIXA data.xlsx</b> 파일이 업로드되어 있는지 확인해주세요.</p>
+                    </div>`;
             }
         });
-
-        function resetBtn() {
-            processBtn.disabled = false;
-            processBtn.innerHTML = "서버에서 데이터 불러오기";
-            processBtn.classList.replace('bg-slate-400', 'bg-blue-600');
-        }
 
         function processExcelDataImmediately() {
             processedItems = [];
@@ -173,33 +251,24 @@
                 const eds = row[8] ? String(row[8]).trim() : '';
 
                 let paddedArtNo = artNo;
-                if (artNo && artNo.length >= 6 && artNo.length <= 8) {
-                    paddedArtNo = artNo.padStart(8, '0');
-                }
+                if (artNo && artNo.length >= 6 && artNo.length <= 8) paddedArtNo = artNo.padStart(8, '0');
 
-                processedItems.push({
-                    mediaType, area, itemNumber: paddedArtNo || 'Empty', ssd, eds
-                });
+                processedItems.push({ mediaType, area, itemNumber: paddedArtNo || 'Empty', ssd, eds });
             });
 
-            filterPanel.classList.remove('hidden');
-            outputContainer.classList.remove('hidden');
-            
-            processBtn.innerText = "데이터 갱신 완료";
-            processBtn.classList.replace('bg-blue-600', 'bg-emerald-600');
-            
-            // 데이터 맵핑 직후 바로 화면에 렌더링
+            document.getElementById('filterPanel').classList.remove('hidden');
+            document.getElementById('outputContainer').classList.remove('hidden');
             applyFilterAndRender();
         }
 
-        [searchMediaType, searchArea, searchArtNo].forEach(input => {
-            input.addEventListener('input', applyFilterAndRender);
+        ['searchMediaType', 'searchArea', 'searchArtNo'].forEach(id => {
+            document.getElementById(id).addEventListener('input', applyFilterAndRender);
         });
 
         function applyFilterAndRender() {
-            const mFilter = searchMediaType.value.toLowerCase().trim();
-            const aFilter = searchArea.value.toLowerCase().trim();
-            const noFilter = searchArtNo.value.trim();
+            const mFilter = document.getElementById('searchMediaType').value.toLowerCase().trim();
+            const aFilter = document.getElementById('searchArea').value.toLowerCase().trim();
+            const noFilter = document.getElementById('searchArtNo').value.trim();
 
             const filtered = processedItems.filter(item => {
                 return item.mediaType.toLowerCase().includes(mFilter) && 
@@ -207,57 +276,60 @@
                        item.itemNumber.includes(noFilter);
             });
 
-            counterDisplay.innerText = `전체: ${processedItems.length}행 | 필터 결과: ${filtered.length}행`;
+            document.getElementById('counterDisplay').innerText = `전체 ${processedItems.length}행 중 ${filtered.length}개 검색됨`;
 
             let desktopHtml = '';
             let mobileHtml = '';
 
             filtered.forEach(item => {
-                // ✨ 스켈레톤 UI (로딩 대기 화면) 즉시 투입
+                // 초기에 빈 스켈레톤 마크업만 투입 (unloaded 클래스 부여)
                 let imgCellContent = `
-                    <div class="img-container flex justify-center items-center h-16 w-16 bg-slate-100 border border-slate-200 rounded mx-auto" data-item="${item.itemNumber}">
-                        <div class="h-2 w-8 bg-slate-300 rounded animate-pulse"></div>
+                    <div class="img-container unloaded flex justify-center items-center h-16 w-16 bg-slate-50 border border-slate-200 rounded mx-auto" data-item="${item.itemNumber}">
+                        <div class="h-1.5 w-6 bg-slate-300 rounded animate-pulse"></div>
                     </div>`;
 
                 desktopHtml += `
-                    <tr class="hover:bg-slate-50">
-                        <td class="p-3 font-medium">${item.mediaType || '-'}</td>
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="p-3 font-medium text-slate-700">${item.mediaType || '-'}</td>
                         <td class="p-3 text-slate-600">${item.area || '-'}</td>
-                        <td class="p-3 font-mono font-semibold">${item.itemNumber}</td>
+                        <td class="p-3 font-mono font-bold text-slate-900">${item.itemNumber}</td>
                         <td class="p-3 text-center">${imgCellContent}</td>
                         <td class="p-3 text-slate-600">${item.ssd || '-'}</td>
                         <td class="p-3 text-slate-600">${item.eds || '-'}</td>
                     </tr>`;
 
                 mobileHtml += `
-                    <div class="bg-white p-4 rounded-xl shadow-sm border space-y-3">
-                        <div class="flex justify-between border-b pb-2">
-                            <div><span class="text-xs bg-slate-100 px-2 rounded">${item.mediaType || '-'}</span><h4 class="text-sm font-bold mt-1">${item.itemNumber}</h4></div>
-                            <div class="text-right text-xs"><span class="block text-slate-400">Area</span><span class="font-semibold">${item.area || '-'}</span></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <div><span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-semibold uppercase">${item.mediaType || '-'}</span><h4 class="text-sm font-bold text-slate-900 mt-1">${item.itemNumber}</h4></div>
+                            <div class="text-right text-xs"><span class="block text-slate-400 font-medium mb-0.5">Area</span><span class="font-bold text-slate-700">${item.area || '-'}</span></div>
                         </div>
-                        <div class="grid grid-cols-3 gap-2 items-center">
+                        <div class="grid grid-cols-3 gap-3 items-center">
                             <div class="col-span-1">${imgCellContent}</div>
-                            <div class="col-span-2 text-xs space-y-1 bg-slate-50 p-2 rounded-lg border">
-                                <div class="flex justify-between"><span class="text-slate-400">SSD:</span><span class="font-medium">${item.ssd || '-'}</span></div>
-                                <div class="flex justify-between"><span class="text-slate-400">EDS:</span><span class="font-medium">${item.eds || '-'}</span></div>
+                            <div class="col-span-2 text-xs space-y-1.5 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">SSD:</span><span class="font-bold text-slate-700">${item.ssd || '-'}</span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">EDS:</span><span class="font-bold text-slate-700">${item.eds || '-'}</span></div>
                             </div>
                         </div>
                     </div>`;
             });
 
             if (filtered.length === 0) {
-                desktopTableBody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400">데이터가 없습니다.</td></tr>`;
-                mobileCardGrid.innerHTML = `<div class="p-8 text-center text-slate-400 bg-white rounded-xl border">데이터가 없습니다.</div>`;
+                document.getElementById('desktopTableBody').innerHTML = `<tr><td colspan="6" class="p-10 text-center text-slate-400 bg-slate-50/50">검색된 데이터가 없습니다.</td></tr>`;
+                document.getElementById('mobileCardGrid').innerHTML = `<div class="p-10 text-center text-slate-400 bg-white rounded-xl border border-slate-200 shadow-sm">검색된 데이터가 없습니다.</div>`;
             } else {
-                desktopTableBody.innerHTML = desktopHtml;
-                mobileCardGrid.innerHTML = mobileHtml;
+                document.getElementById('desktopTableBody').innerHTML = desktopHtml;
+                document.getElementById('mobileCardGrid').innerHTML = mobileHtml;
                 
-                // ✨ 화면을 띄운 뒤, 현재 보이는 제품 이미지만 백그라운드에서 추적 로딩
-                lazyLoadImages(filtered);
+                // 화면 렌더링 직후 생성된 스켈레톤 요소들을 Observer에 등록
+                document.querySelectorAll('.img-container.unloaded').forEach(el => {
+                    el.classList.remove('unloaded');
+                    imageObserver.observe(el);
+                });
             }
         }
 
-        // ✨ 제공해주신 소스의 훌륭한 JSON 정밀 탐색 엔진 이식
+        // JSON 탐색 (변경 없음)
         function findBestImage(obj) {
             let bestUrl = null;
             function traverse(o) {
@@ -269,75 +341,14 @@
                             let actualUrl = o[key];
                             if (actualUrl.startsWith('//')) actualUrl = 'https:' + actualUrl;
                             else if (actualUrl.startsWith('/')) actualUrl = 'https://www.ikea.com' + actualUrl;
-                            
                             if (!bestUrl) bestUrl = actualUrl;
                             else if (actualUrl.includes('s5') || actualUrl.includes('main')) bestUrl = actualUrl;
                         }
-                    } else if (typeof o[key] === 'object') {
-                        traverse(o[key]);
-                    }
+                    } else if (typeof o[key] === 'object') traverse(o[key]);
                 }
             }
             traverse(obj);
             return bestUrl;
-        }
-
-        // ✨ 비동기 지연 로딩 로직 (캐시 확인 및 병렬 호출)
-        async function lazyLoadImages(filteredItems) {
-            // 중복 번호 제거 및 유효성 필터링
-            const uniqueItems = [...new Set(filteredItems.map(i => i.itemNumber))].filter(no => no !== 'Empty');
-            const useProxy = document.getElementById('useProxy').checked;
-            const proxyPrefix = document.getElementById('proxyUrl').value.trim();
-
-            // 1차: 이미 캐시에 있는 이미지는 즉시 렌더링 (화면 깜빡임 방지)
-            uniqueItems.forEach(itemNo => {
-                if(imageCache.has(itemNo)) updateImageDOM(itemNo, imageCache.get(itemNo));
-            });
-
-            // 2차: 캐시에 없는 새로운 이미지만 5개씩 병렬 API 요청
-            const itemsToFetch = uniqueItems.filter(no => !imageCache.has(no));
-            const CONCURRENCY = 5; 
-
-            for (let i = 0; i < itemsToFetch.length; i += CONCURRENCY) {
-                const batch = itemsToFetch.slice(i, i + CONCURRENCY);
-                
-                await Promise.all(batch.map(async (itemNo) => {
-                    let targetUrl = `https://sik.search.blue.cdtapps.com/kr/ko/search-box?q=${itemNo}`;
-                    if (useProxy && proxyPrefix) targetUrl = proxyPrefix + encodeURIComponent(targetUrl);
-
-                    let imgUrl = 'No Image';
-                    try {
-                        const res = await fetch(targetUrl);
-                        if (res.ok) {
-                            const data = await res.json();
-                            imgUrl = findBestImage(data) || 'No Image';
-                        } else {
-                            imgUrl = 'Network Error';
-                        }
-                    } catch (e) {
-                        imgUrl = 'Network Error';
-                    }
-                    
-                    imageCache.set(itemNo, imgUrl);
-                    updateImageDOM(itemNo, imgUrl);
-                }));
-            }
-        }
-
-        // ✨ 찾아낸 이미지를 화면의 스켈레톤과 교체하는 렌더링 함수
-        function updateImageDOM(itemNo, imgUrl) {
-            const containers = document.querySelectorAll(`.img-container[data-item="${itemNo}"]`);
-            containers.forEach(container => {
-                // 기존 클래스 걷어내기
-                container.className = "flex justify-center items-center h-16 w-16 mx-auto"; 
-                
-                if (imgUrl.startsWith('http')) {
-                    container.innerHTML = `<img src="${imgUrl}" class="h-16 w-16 object-contain rounded bg-white cursor-zoom-in hover:scale-110 transition-transform border border-slate-200" onclick="window.open('${imgUrl}', '_blank')">`;
-                } else {
-                    const badgeColor = imgUrl === 'No Image' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-800';
-                    container.innerHTML = `<span class="px-2 py-1 text-[10px] font-medium rounded-full ${badgeColor}">${imgUrl}</span>`;
-                }
-            });
         }
     </script>
 </body>
