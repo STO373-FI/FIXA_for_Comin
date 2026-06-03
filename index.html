@@ -20,7 +20,7 @@
             <a href="." class="text-xl font-bold tracking-tight flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
                 📦 <span>FIXA 데이터 이미지 뷰어</span>
             </a>
-            <div class="text-xs text-slate-400">Final Release (CSV Export Added)</div>
+            <div class="text-xs text-slate-400">Final Release (Table Ratio & Word-wrap Fixed)</div>
         </div>
     </header>
 
@@ -87,13 +87,13 @@
                     <table class="w-full text-left border-collapse table-fixed min-w-[1000px]">
                         <thead class="bg-slate-900 text-white text-xs font-semibold uppercase sticky top-0 z-10">
                             <tr>
-                                <th class="w-[10%] p-3 border-b border-slate-700">Media Type</th>
-                                <th class="w-[10%] p-3 border-b border-slate-700">Area</th>
-                                <th class="w-[12%] p-3 border-b border-slate-700">제품 번호</th>
+                                <th class="w-[14%] p-3 border-b border-slate-700">Media Type</th>
+                                <th class="w-[12%] p-3 border-b border-slate-700">Area</th>
+                                <th class="w-[10%] p-3 border-b border-slate-700">제품 번호</th>
                                 <th class="w-[18%] p-3 border-b border-slate-700">제품명</th>
                                 <th class="w-[30%] p-3 border-b border-slate-700 text-center">이미지</th>
-                                <th class="w-[10%] p-3 border-b border-slate-700">SSD</th>
-                                <th class="w-[10%] p-3 border-b border-slate-700">EDS</th>
+                                <th class="w-[8%] p-3 border-b border-slate-700">SSD</th>
+                                <th class="w-[8%] p-3 border-b border-slate-700">EDS</th>
                             </tr>
                         </thead>
                         <tbody id="desktopTableBody" class="text-sm divide-y divide-slate-100 bg-white"></tbody>
@@ -109,7 +109,7 @@
 
     <script>
         let serverData = [];
-        let currentFilteredData = []; // CSV 다운로드를 위해 필터링된 전체 데이터를 담을 그릇
+        let currentFilteredData = []; 
         
         const RENDER_LIMIT = 1000;
         const EDS_THRESHOLD = '20260701';
@@ -132,7 +132,6 @@
                 document.getElementById('loadingStatus').classList.add('hidden');
                 document.getElementById('filterPanel').classList.remove('hidden');
                 
-                // 모바일이 아닐 때만 다운로드 버튼 컨테이너 노출
                 if (window.innerWidth >= 768) {
                     document.getElementById('exportContainer').classList.remove('hidden');
                     document.getElementById('exportContainer').classList.add('flex');
@@ -153,7 +152,6 @@
             }
         });
 
-        // 타이핑 디바운스
         let filterTimeout;
         function debouncedFilter() {
             clearTimeout(filterTimeout);
@@ -178,7 +176,6 @@
             radio.addEventListener('change', applyFilterAndRender);
         });
 
-        // 엑셀(CSV) 내보내기 로직
         document.getElementById('exportCsvBtn').addEventListener('click', () => {
             if (currentFilteredData.length === 0) {
                 alert('다운로드할 데이터가 없습니다.');
@@ -188,11 +185,11 @@
             const headers = ['Media Type', 'Area', '제품 번호', '제품명', 'SSD', 'EDS'];
             
             const csvRows = currentFilteredData.map(item => {
-                const itemNameEscaped = (item.itemName || '-').replace(/"/g, '""'); // 따옴표 이스케이프
+                const itemNameEscaped = (item.itemName || '-').replace(/"/g, '""');
                 return [
                     `"${item.mediaType || '-'}"`,
                     `"${item.area || '-'}"`,
-                    `="${item.itemNumber}"`, // 엑셀에서 앞자리 0이 사라지지 않도록 수식 처리
+                    `="${item.itemNumber}"`,
                     `"${itemNameEscaped}"`,
                     `"${item.ssd || '-'}"`,
                     `"${item.eds || '-'}"`
@@ -200,8 +197,6 @@
             });
 
             const csvContent = headers.join(',') + '\n' + csvRows.join('\n');
-            
-            // 한글 깨짐 방지를 위한 BOM(\uFEFF) 추가
             const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
@@ -219,7 +214,6 @@
             const noFilter = document.getElementById('searchArtNo').value.trim();
             const edsToggleVal = document.querySelector('input[name="edsFilter"]:checked').value;
 
-            // 전역 변수에 전체 필터링 결과 저장 (다운로드 용)
             currentFilteredData = serverData.filter(item => {
                 const matchMedia = item.mediaType.toLowerCase().includes(mFilter);
                 const matchArea = item.area.toLowerCase().includes(aFilter);
@@ -235,7 +229,6 @@
                 return matchMedia && matchArea && matchNo && matchEds;
             });
 
-            // 렌더링은 무조건 1000개로 자름 (브라우저 보호)
             const limitedResults = currentFilteredData.slice(0, RENDER_LIMIT);
             
             let counterText = `전체 ${serverData.length.toLocaleString()}행 중 ${currentFilteredData.length.toLocaleString()}개 검색됨`;
@@ -262,10 +255,11 @@
                     }
                 }
 
+                // truncate 제거하고 break-words 속성 추가 (긴 단어도 자동으로 줄바꿈)
                 desktopHtml += `
                     <tr class="hover:bg-slate-50 transition-colors">
-                        <td class="p-3 font-medium text-slate-700 truncate">${item.mediaType || '-'}</td>
-                        <td class="p-3 text-slate-600 font-semibold">${item.area || '-'}</td>
+                        <td class="p-3 font-medium text-slate-700 break-words">${item.mediaType || '-'}</td>
+                        <td class="p-3 text-slate-600 font-semibold break-words">${item.area || '-'}</td>
                         <td class="p-3 font-mono font-bold text-slate-900">${item.itemNumber}</td>
                         <td class="p-3 text-slate-700 text-xs font-medium leading-relaxed">${item.itemName || '-'}</td>
                         <td class="p-3 text-center align-middle py-2">${imgCellContent}</td>
@@ -273,6 +267,7 @@
                         <td class="p-3 align-middle">${edsDisplay}</td>
                     </tr>`;
 
+                // 모바일 뷰에서도 텍스트가 잘리지 않도록 truncate 속성 제거
                 mobileHtml += `
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                         <div class="flex items-start gap-4">
@@ -284,12 +279,12 @@
                             </div>
                             <div class="w-3/5 space-y-2.5">
                                 <div class="flex flex-col gap-1">
-                                    <span class="text-[10px] bg-slate-100 w-fit px-1.5 py-0.5 rounded text-slate-500 font-bold uppercase truncate max-w-full">${item.mediaType || '-'}</span>
+                                    <span class="text-[10px] bg-slate-100 w-fit px-1.5 py-0.5 rounded text-slate-500 font-bold uppercase break-words max-w-full">${item.mediaType || '-'}</span>
                                     <h4 class="text-lg font-black text-slate-900 leading-none mt-0.5">${item.itemNumber}</h4>
                                     <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-2">${item.itemName || '-'}</p>
                                 </div>
                                 <div class="text-xs bg-blue-50/50 p-2 rounded border border-blue-100/50 space-y-1.5">
-                                    <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">Area:</span><span class="font-bold text-slate-700 truncate ml-2">${item.area || '-'}</span></div>
+                                    <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">Area:</span><span class="font-bold text-slate-700 break-words text-right ml-2">${item.area || '-'}</span></div>
                                     <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">SSD:</span><span class="font-bold text-slate-700">${item.ssd || '-'}</span></div>
                                     <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">EDS:</span><span class="font-bold text-slate-700">${edsDisplay}</span></div>
                                 </div>
