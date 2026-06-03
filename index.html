@@ -20,7 +20,7 @@
             <a href="." class="text-xl font-bold tracking-tight flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
                 📦 <span>FIXA 데이터 이미지 뷰어</span>
             </a>
-            <div class="text-xs text-slate-400">Final Release (Item Name Added)</div>
+            <div class="text-xs text-slate-400">Final Release (CSV Export Added)</div>
         </div>
     </header>
 
@@ -73,6 +73,13 @@
             </div>
         </div>
 
+        <div id="exportContainer" class="hidden md:flex justify-end px-1">
+            <button id="exportCsvBtn" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-lg text-sm font-bold shadow-sm transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                현재 목록 CSV 다운로드
+            </button>
+        </div>
+
         <div id="outputContainer" class="hidden flex-grow flex flex-col min-h-0">
             
             <div class="hidden md:flex flex-col bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex-grow">
@@ -102,8 +109,18 @@
 
     <script>
         let serverData = [];
+        let currentFilteredData = []; // CSV 다운로드를 위해 필터링된 전체 데이터를 담을 그릇
+        
         const RENDER_LIMIT = 1000;
         const EDS_THRESHOLD = '20260701';
+
+        function getTodayYYYYMMDD() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}${month}${day}`;
+        }
 
         document.addEventListener('DOMContentLoaded', async () => {
             try {
@@ -114,6 +131,12 @@
                 
                 document.getElementById('loadingStatus').classList.add('hidden');
                 document.getElementById('filterPanel').classList.remove('hidden');
+                
+                // 모바일이 아닐 때만 다운로드 버튼 컨테이너 노출
+                if (window.innerWidth >= 768) {
+                    document.getElementById('exportContainer').classList.remove('hidden');
+                    document.getElementById('exportContainer').classList.add('flex');
+                }
                 document.getElementById('outputContainer').classList.remove('hidden');
                 
                 applyFilterAndRender();
@@ -130,6 +153,7 @@
             }
         });
 
+        // 타이핑 디바운스
         let filterTimeout;
         function debouncedFilter() {
             clearTimeout(filterTimeout);
@@ -154,13 +178,49 @@
             radio.addEventListener('change', applyFilterAndRender);
         });
 
+        // 엑셀(CSV) 내보내기 로직
+        document.getElementById('exportCsvBtn').addEventListener('click', () => {
+            if (currentFilteredData.length === 0) {
+                alert('다운로드할 데이터가 없습니다.');
+                return;
+            }
+
+            const headers = ['Media Type', 'Area', '제품 번호', '제품명', 'SSD', 'EDS'];
+            
+            const csvRows = currentFilteredData.map(item => {
+                const itemNameEscaped = (item.itemName || '-').replace(/"/g, '""'); // 따옴표 이스케이프
+                return [
+                    `"${item.mediaType || '-'}"`,
+                    `"${item.area || '-'}"`,
+                    `="${item.itemNumber}"`, // 엑셀에서 앞자리 0이 사라지지 않도록 수식 처리
+                    `"${itemNameEscaped}"`,
+                    `"${item.ssd || '-'}"`,
+                    `"${item.eds || '-'}"`
+                ].join(',');
+            });
+
+            const csvContent = headers.join(',') + '\n' + csvRows.join('\n');
+            
+            // 한글 깨짐 방지를 위한 BOM(\uFEFF) 추가
+            const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            
+            link.href = url;
+            link.setAttribute('download', `FIXA_Filtered_Data_${getTodayYYYYMMDD()}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
         function applyFilterAndRender() {
             const mFilter = document.getElementById('searchMediaType').value.toLowerCase().trim();
             const aFilter = document.getElementById('searchArea').value.toLowerCase().trim();
             const noFilter = document.getElementById('searchArtNo').value.trim();
             const edsToggleVal = document.querySelector('input[name="edsFilter"]:checked').value;
 
-            const filtered = serverData.filter(item => {
+            // 전역 변수에 전체 필터링 결과 저장 (다운로드 용)
+            currentFilteredData = serverData.filter(item => {
                 const matchMedia = item.mediaType.toLowerCase().includes(mFilter);
                 const matchArea = item.area.toLowerCase().includes(aFilter);
                 const matchNo = item.itemNumber.includes(noFilter);
@@ -175,11 +235,12 @@
                 return matchMedia && matchArea && matchNo && matchEds;
             });
 
-            const limitedResults = filtered.slice(0, RENDER_LIMIT);
+            // 렌더링은 무조건 1000개로 자름 (브라우저 보호)
+            const limitedResults = currentFilteredData.slice(0, RENDER_LIMIT);
             
-            let counterText = `전체 ${serverData.length.toLocaleString()}행 중 ${filtered.length.toLocaleString()}개 검색됨`;
-            if (filtered.length > RENDER_LIMIT) {
-                counterText += ` <span class="text-rose-600 font-black">(표시 제한: ${RENDER_LIMIT}개)</span>`;
+            let counterText = `전체 ${serverData.length.toLocaleString()}행 중 ${currentFilteredData.length.toLocaleString()}개 검색됨`;
+            if (currentFilteredData.length > RENDER_LIMIT) {
+                counterText += ` <span class="text-rose-600 font-black">(화면 표시 제한: ${RENDER_LIMIT}개)</span>`;
             }
             document.getElementById('counterDisplay').innerHTML = counterText;
 
@@ -201,7 +262,6 @@
                     }
                 }
 
-                // 데스크톱 뷰: 제품명(itemName) 컬럼 추가
                 desktopHtml += `
                     <tr class="hover:bg-slate-50 transition-colors">
                         <td class="p-3 font-medium text-slate-700 truncate">${item.mediaType || '-'}</td>
@@ -213,7 +273,6 @@
                         <td class="p-3 align-middle">${edsDisplay}</td>
                     </tr>`;
 
-                // 모바일 뷰: 제품 번호 아래에 제품명(itemName) 노출 추가
                 mobileHtml += `
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                         <div class="flex items-start gap-4">
