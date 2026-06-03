@@ -3,7 +3,7 @@ name: Update FIXA Data to JSON
 on:
   push:
     paths:
-      - 'FIXA data.xlsx'
+      - 'FIXA mediamaintenance Tool.xlsx' # 변경된 파일명 감지
   workflow_dispatch:
 
 jobs:
