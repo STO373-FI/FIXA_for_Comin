@@ -17120,6 +17120,15 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "D03 Home",
+    "itemNumber": "80589393",
+    "itemName": "VILDGÅS junior chair white/white AP",
+    "ssd": "20250401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/vildgas-junior-chair-white-white__1378367_pe961206_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "D03 Home",
     "itemNumber": "80600692",
     "itemName": "TRAMPSJÖN bathtub mat 43x43 light turquoise 2-p AP",
     "ssd": "20250401",
@@ -27672,7 +27681,7 @@
     "itemName": "NATTJASMIN dc/2pwc 240x220/50x80 light beige AP",
     "ssd": "20190401",
     "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/nattjasmin-duvet-cover-and-2-pillowcases-light-beige__0720527_pe732613_s5.jpg"
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/nattjasmin-duvet-cover-and-2-pillowcases-light-beige__1556712_pe1024505_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -33824,6 +33833,24 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "SE01",
+    "itemNumber": "10610859",
+    "itemName": "ENERYDA N handle 112 mm brass-colour 2-p AP",
+    "ssd": "20260101",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/eneryda-handle-brass-colour__1427449_pe980246_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "SE01",
+    "itemNumber": "93633747",
+    "itemName": "-",
+    "ssd": "",
+    "eds": "",
+    "imageUrl": "No Image"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "SE01",
     "itemNumber": "00612482",
     "itemName": "LÄRKAR garden s2 birch/stainless steel large AP",
     "ssd": "20260101",
@@ -34036,24 +34063,6 @@
     "ssd": "20241001",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/metod-leg-for-cabinet__1301901_pe937585_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "SE01",
-    "itemNumber": "10610859",
-    "itemName": "ENERYDA N handle 112 mm brass-colour 2-p AP",
-    "ssd": "20260101",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/eneryda-handle-brass-colour__1427449_pe980246_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "SE01",
-    "itemNumber": "93633747",
-    "itemName": "-",
-    "ssd": "",
-    "eds": "",
-    "imageUrl": "No Image"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -34616,15 +34625,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "SE01",
-    "itemNumber": "93633706",
-    "itemName": "-",
-    "ssd": "",
-    "eds": "",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "SE01",
     "itemNumber": "50556068",
     "itemName": "ME N leg f cb 8 2-p AP CN",
     "ssd": "20241001",
@@ -34639,6 +34639,15 @@
     "ssd": "20141001",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/metod-top-cabinet-with-ventilation-white__0640627_pe699947_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "SE01",
+    "itemNumber": "93633706",
+    "itemName": "-",
+    "ssd": "",
+    "eds": "",
+    "imageUrl": "No Image"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -39803,7 +39812,7 @@
     "itemNumber": "00572768",
     "itemName": "MÖRTFORS pouffe 47x47 Diseröd grey AP",
     "ssd": "20241001",
-    "eds": "",
+    "eds": "20270401",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/moertfors-pouffe-diseroed-grey__1320807_pe941370_s5.jpg"
   },
   {
@@ -45716,7 +45725,7 @@
     "itemNumber": "10608088",
     "itemName": "ÄRENDE rug high pile 120x180 grey AP",
     "ssd": "20250701",
-    "eds": "",
+    "eds": "20270701",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/aerende-rug-high-pile-grey__1389856_pe965285_s5.jpg"
   },
   {
@@ -51662,6 +51671,69 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "L07",
+    "itemNumber": "80557231",
+    "itemName": "ROCKSJÖN cvr f so2 Klovsta grey/white AP",
+    "ssd": "20240701",
+    "eds": "20261001",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/rocksjoen-cover-for-2-seat-sofa-klovsta-grey-white__1258167_pe927357_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "L07",
+    "itemNumber": "80557207",
+    "itemName": "ROCKSJÖN cvr f ftst Klovsta grey/white AP",
+    "ssd": "20240401",
+    "eds": "20261001",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/rocksjoen-cover-for-footstool-klovsta-grey-white__1258167_pe927357_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "L07",
+    "itemNumber": "30353057",
+    "itemName": "KRAGSTA cff tbl 90 white AP",
+    "ssd": "20170801",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/kragsta-coffee-table-white__0256314_pe400187_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "L07",
+    "itemNumber": "00454675",
+    "itemName": "TRANHULT shelf 80x20 white stained aspen AP",
+    "ssd": "20200201",
+    "eds": "20270101",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/tranhult-shelf-white-stained-aspen__0783729_pe761564_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "L07",
+    "itemNumber": "30456404",
+    "itemName": "SANDSHULT bracket 18x22 white stained aspen AP",
+    "ssd": "20200201",
+    "eds": "20270101",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/sandshult-bracket-white-stained-aspen__0783719_pe761566_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "L07",
+    "itemNumber": "20529236",
+    "itemName": "HAVSTA sideboard bas ut 121x47x89 white AP",
+    "ssd": "20240701",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/havsta-sideboard-basic-unit-white__1296033_pe935668_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "L07",
+    "itemNumber": "80529257",
+    "itemName": "HAVSTA N gls-dr cb 121x35x123 white AP",
+    "ssd": "20240701",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/havsta-glass-door-cabinet-white__1294517_pe935485_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "L07",
     "itemNumber": "10528483",
     "itemName": "DYTÅG cushion cvr 50x50 dark beige AP",
     "ssd": "20220401",
@@ -51721,15 +51793,6 @@
     "ssd": "20141201",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/sockeraert-vase-jug-white__0091174_pe226467_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "L07",
-    "itemNumber": "10557215",
-    "itemName": "ROCKSJÖN cvr f ftst Blekinge white AP",
-    "ssd": "20240401",
-    "eds": "20261001",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/rocksjoen-cover-for-footstool-blekinge-white__1250804_pe924028_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -52004,15 +52067,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "L07",
-    "itemNumber": "40546796",
-    "itemName": "ROCKSJÖN cvr f ach Blekinge white AP",
-    "ssd": "20240401",
-    "eds": "20261001",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/rocksjoen-cover-for-armchair-blekinge-white__1247358_pe922626_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "L07",
     "itemNumber": "40219898",
     "itemName": "BETYDLIG crtn rod hldr white AP CN",
     "ssd": "20140801",
@@ -52063,15 +52117,6 @@
     "ssd": "20230101",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/korken-bottle-shaped-jar-with-lid-clear-glass__1152252_pe885219_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "L07",
-    "itemNumber": "20407292",
-    "itemName": "HAUGA sideboard 140x84 white AP",
-    "ssd": "20210201",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hauga-sideboard-white__0914116_pe783853_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -52279,15 +52324,6 @@
     "ssd": "20160401",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/fladis-basket-seagrass__0713073_pe729177_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "L07",
-    "itemNumber": "30415060",
-    "itemName": "HAUGA hi cb 2drs 70x199 white AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hauga-high-cabinet-with-2-doors-white__0914112_pe783851_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -55163,20 +55199,29 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W02",
-    "itemNumber": "79429579",
+    "itemNumber": "19533055",
     "itemName": "-",
     "ssd": "",
     "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/trotten-desk-sit-stand-white__1020756_pe831984_s5.jpg"
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/mittzon-conference-table-white__1215861_pe912238_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W02",
-    "itemNumber": "09424943",
+    "itemNumber": "39429557",
     "itemName": "-",
     "ssd": "",
     "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/trotten-desk-white__1012705_pe828980_s5.jpg"
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/trotten-desk-white__1012710_pe828985_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W02",
+    "itemNumber": "59429603",
+    "itemName": "-",
+    "ssd": "",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/trotten-desk-sit-stand-white__1020773_pe835553_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -59438,24 +59483,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W03",
-    "itemNumber": "93738200",
-    "itemName": "-",
-    "ssd": "",
-    "eds": "",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "93738200",
-    "itemName": "-",
-    "ssd": "",
-    "eds": "",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
     "itemNumber": "60457831",
     "itemName": "GRUSSTARR duvet cool 150x200 AP",
     "ssd": "20200201",
@@ -59465,38 +59492,11 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W03",
-    "itemNumber": "60387579",
-    "itemName": "LÄTTHET leg adjustable white 4-p AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-leg-adjustable-white__0623376_pe691101_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30572601",
-    "itemName": "BEGRIPA NN handle 130 mm yellow/half-round 2-p AP",
-    "ssd": "20240101",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/begripa-handle-yellow-half-round__1205401_pe907081_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
     "itemNumber": "10485638",
     "itemName": "EFTERTRÄDA bag white AP",
     "ssd": "20200601",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/eftertraeda-bag-white__0915950_pe784933_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "70372775",
-    "itemName": "FJÄDRAR cush pad 50x50 off-white KR",
-    "ssd": "20180801",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/pimg/0243140_pe382470_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -59564,6 +59564,195 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W03",
+    "itemNumber": "70595530",
+    "itemName": "EKET cabinet 35x25x35 pale lilac AP",
+    "ssd": "20260101",
+    "eds": "20270101",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/eket-cabinet-pale-lilac__1417235_pe975987_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "70547983",
+    "itemName": "BLÅSVERK table lamp 36 yellow KR",
+    "ssd": "20230701",
+    "eds": "20261001",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/blasverk-table-lamp-yellow__1217784_pe913021_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "70372775",
+    "itemName": "FJÄDRAR cush pad 50x50 off-white KR",
+    "ssd": "20180801",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/pimg/0243140_pe382470_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "70593215",
+    "itemName": "FEJKA artifi pttd plant 9 i/o/Wax plant hanging AP",
+    "ssd": "20250101",
+    "eds": "20250701",
+    "imageUrl": "No Image"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "00594096",
+    "itemName": "SLÄKT headboard with cover Vissle beige AP",
+    "ssd": "20250401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/slaekt-headboard-with-cover-vissle-beige__1383091_pe967163_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "60458618",
+    "itemName": "LINDBYN mirror 40x130 black AP",
+    "ssd": "20200201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/lindbyn-mirror-black__0798818_pe767396_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "40550095",
+    "itemName": "RÖDALM frame 30x40 white AP",
+    "ssd": "20240401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/roedalm-frame-white__1251237_pe924199_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "20387208",
+    "itemName": "KOMPL N multi-use hang white AP",
+    "ssd": "20171001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/komplement-multi-use-hanger-white__0710656_pe727686_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "20579151",
+    "itemName": "PILTANDVINGE dc/pwc 150x200/50x80 pink AP",
+    "ssd": "20240701",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/piltandvinge-duvet-cover-and-pillowcase-pink__1279128_pe931338_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "10489392",
+    "itemName": "MILLBERGET N swivel chr Murum beige AP",
+    "ssd": "20211001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/millberget-swivel-chair-murum-beige__1020141_pe831795_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "90515071",
+    "itemName": "TRYSSE hanger white/grey 5-p AP",
+    "ssd": "20230401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/trysse-hanger-white-grey__1020737_pe831966_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "90540730",
+    "itemName": "GÅRDSMÄSTARE trouser/skrt hngr white AP",
+    "ssd": "20230101",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/gardsmaestare-trouser-skirt-hanger-white__1128825_pe876702_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "30534628",
+    "itemName": "SÄTTING cable managem box w lid AP",
+    "ssd": "20221001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/saetting-cable-management-box-with-lid__1145556_pe882706_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "20546472",
+    "itemName": "UPPDATERA box 34x24 white AP",
+    "ssd": "20240401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/uppdatera-box-white__1215013_pe911811_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "00477040",
+    "itemName": "NOJIG organiser 10x10x5 plastic/beige AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/nojig-organiser-plastic-beige__0954108_pe804511_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "30587443",
+    "itemName": "VÅRSYREN lantern f tealt 12 brown-orange AP",
+    "ssd": "20241001",
+    "eds": "20260401",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/varsyren-lantern-for-tealight-brown-orange__1368797_pe957913_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "50502419",
+    "itemName": "-",
+    "ssd": "",
+    "eds": "",
+    "imageUrl": "No Image"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "70321615",
+    "itemName": "SKÅDIS clip white 2-p AP CN",
+    "ssd": "20180201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/skadis-clip-white__0710524_pe727602_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "80348025",
+    "itemName": "RAGGISAR tray 40x30 dark grey AP",
+    "ssd": "20170801",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/raggisar-tray-dark-grey__0710846_pe727798_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "00222459",
+    "itemName": "SUMMERA drwr insert w 6 comp 44x37 anthr AP CN",
+    "ssd": "20140801",
+    "eds": "20270101",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/summera-drawer-insert-with-6-compartments-anthracite__0135809_pe292680_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "80461083",
+    "itemName": "MÅLA NNN drawing paper roll 30 m AP",
+    "ssd": "20190801",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/mala-drawing-paper-roll__0710263_pe727430_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
     "itemNumber": "30600883",
     "itemName": "FEJKA artifi ptt plant 12 in/out Crocodile fern AP",
     "ssd": "20250701",
@@ -59582,38 +59771,56 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W03",
-    "itemNumber": "10387459",
-    "itemName": "HJÄLPA p-out rail f bskt 40 white 2-p AP",
-    "ssd": "20180401",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-pull-out-rail-for-baskets-white__0626638_pe692926_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "70472831",
-    "itemName": "SMÅSTAD top f stor module 60x40 white AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-top-for-storage-module-white__0846455_pe779097_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30387477",
-    "itemName": "PLATSA frame 60x40x60 white AP",
-    "ssd": "20180401",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/platsa-frame-white__0721325_pe733171_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "10386983",
-    "itemName": "HJÄLPA soft clsng hinge 1-p AP",
-    "ssd": "20210201",
+    "itemNumber": "00568530",
+    "itemName": "KUGGIS box 18x26x15 white AP",
+    "ssd": "20240401",
     "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-soft-closing-hinge__0846367_pe779039_s5.jpg"
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/kuggis-box-white__1248389_pe923076_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "20568529",
+    "itemName": "KUGGIS lid 18x26 white AP",
+    "ssd": "20240401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/kuggis-lid-white__1248416_pe923090_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "20568548",
+    "itemName": "KUGGIS box 13x18x8 white AP",
+    "ssd": "20240401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/kuggis-box-white__1248387_pe923074_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "40568547",
+    "itemName": "KUGGIS lid 13x18 white AP",
+    "ssd": "20240401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/kuggis-lid-white__1287253_pe933885_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "30238538",
+    "itemName": "BUMERANG hanger natural 8-p AP CN",
+    "ssd": "20150801",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/bumerang-hanger-natural__0710666_pe727700_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W03",
+    "itemNumber": "80173308",
+    "itemName": "BUMERANG trouser hngr natural AP CN",
+    "ssd": "20140801",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/bumerang-trouser-hanger-natural__0710676_pe727704_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -59623,33 +59830,6 @@
     "ssd": "20170801",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/nymane-ceiling-spotlight-with-4-spots-white__0607350_pe682899_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "10387459",
-    "itemName": "HJÄLPA p-out rail f bskt 40 white 2-p AP",
-    "ssd": "20180401",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-pull-out-rail-for-baskets-white__0626638_pe692926_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "20579151",
-    "itemName": "PILTANDVINGE dc/pwc 150x200/50x80 pink AP",
-    "ssd": "20240701",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/piltandvinge-duvet-cover-and-pillowcase-pink__1279128_pe931338_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "90544224",
-    "itemName": "SOLFÅGEL canvas pad 16 pieces AP",
-    "ssd": "20230701",
-    "eds": "20270101",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/solfagel-canvas-pad__1165582_pe890901_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -59677,24 +59857,6 @@
     "ssd": "20250701",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/fjaederharv-magazine-file-white__1396170_pe967195_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30387496",
-    "itemName": "HJÄLPA wre bskt 60x40 white AP",
-    "ssd": "20180401",
-    "eds": "20260401",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "60387579",
-    "itemName": "LÄTTHET leg adjustable white 4-p AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-leg-adjustable-white__0623376_pe691101_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -59816,96 +59978,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W03",
-    "itemNumber": "10386983",
-    "itemName": "HJÄLPA soft clsng hinge 1-p AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-soft-closing-hinge__0846367_pe779039_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "20434224",
-    "itemName": "SMÅSTAD door 30x60 white 2-p AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-white__0841010_pe778745_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30386246",
-    "itemName": "HJÄLPA shelf 60x40 white Metal AP",
-    "ssd": "20180401",
-    "eds": "20260401",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30387496",
-    "itemName": "HJÄLPA wre bskt 60x40 white AP",
-    "ssd": "20180401",
-    "eds": "20260401",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "20434224",
-    "itemName": "SMÅSTAD door 30x60 white 2-p AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-white__0841010_pe778745_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30386246",
-    "itemName": "HJÄLPA shelf 60x40 white Metal AP",
-    "ssd": "20180401",
-    "eds": "20260401",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30387477",
-    "itemName": "PLATSA frame 60x40x60 white AP",
-    "ssd": "20180401",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/platsa-frame-white__0721325_pe733171_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30572601",
-    "itemName": "BEGRIPA NN handle 130 mm yellow/half-round 2-p AP",
-    "ssd": "20240101",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/begripa-handle-yellow-half-round__1205401_pe907081_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "70472831",
-    "itemName": "SMÅSTAD top f stor module 60x40 white AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-top-for-storage-module-white__0846455_pe779097_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "90544238",
-    "itemName": "SOLFÅGEL acrylic paint 375 ml mixed colours 5-p AP",
-    "ssd": "20230701",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/solfagel-acrylic-paint-mixed-colours__1163451_pe890181_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
     "itemNumber": "30283899",
     "itemName": "FADO N table lamp 25 white KR",
     "ssd": "20140801",
@@ -59920,15 +59992,6 @@
     "ssd": "20230701",
     "eds": "20261001",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/stoftmoln-led-ceiling-wall-lamp-smart-wireless-dimmable-warm-white-white__1014411_pe829649_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "30332121",
-    "itemName": "EKET cabinet 35x25x35 white AP",
-    "ssd": "20170201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/eket-cabinet-white__1212317_pe910594_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -59965,15 +60028,6 @@
     "ssd": "20260101",
     "eds": "20260701",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/pjaetteryd-picture-prismatic-passage__1446539_pe988623_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "00610746",
-    "itemName": "FEJKA artifi pttd plant 9 in/out/plantain lily AP",
-    "ssd": "20260101",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/fejka-artificial-potted-plant-in-outdoor-plantain-lily__1467005_pe995611_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -60019,15 +60073,6 @@
     "ssd": "20260101",
     "eds": "20260701",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/sojaboena-plant-pot-light-pink__1461325_pe994147_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "80420243",
-    "itemName": "TOFTLUND rug 55x85 white AP",
-    "ssd": "20181001",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/toftlund-rug-white__0617682_pe688130_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -60140,15 +60185,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W03",
-    "itemNumber": "50549544",
-    "itemName": "HUMLEMOTT throw 130x170 off-white AP",
-    "ssd": "20230401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/humlemott-throw-off-white__1147029_pe883224_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
     "itemNumber": "60426830",
     "itemName": "STOENSE rug low pile 130 medium grey AP",
     "ssd": "20190401",
@@ -60248,15 +60284,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W03",
-    "itemNumber": "90610110",
-    "itemName": "STACKSTOD desk org 32x18x16 grey-blue AP",
-    "ssd": "20260101",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/stackstod-desk-organiser-grey-blue__1467494_pe995740_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
     "itemNumber": "80257609",
     "itemName": "GESTALTA N artist's dummy 33 natural AP CN",
     "ssd": "20140801",
@@ -60280,24 +60307,6 @@
     "ssd": "20210701",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/droenjoens-pen-cup-white__0994330_pe822795_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "50556346",
-    "itemName": "SOLFÅGEL roll-up pencil case beige AP",
-    "ssd": "20231001",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/solfagel-roll-up-pencil-case-beige__1164184_pe890453_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "00544233",
-    "itemName": "SOLFÅGEL coloured pencil mixed colours 24-p AP",
-    "ssd": "20231001",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/solfagel-coloured-pencil-mixed-colours__1163412_pe890172_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -60388,15 +60397,6 @@
     "ssd": "20230401",
     "eds": "20270101",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/oejulf-laptop-support-dark-grey__1167478_pe891586_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W03",
-    "itemNumber": "99252367",
-    "itemName": "-",
-    "ssd": "",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/langfjaell-conference-chair-gunnared-beige-white__0725410_pe734846_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -61391,6 +61391,15 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W05",
+    "itemNumber": "90474773",
+    "itemName": "TROTTEN cabinet w doors 70x35x110 white AP",
+    "ssd": "20211001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/trotten-cabinet-with-doors-white__1007247_pe825962_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "W05",
     "itemNumber": "10318164",
     "itemName": "IVAR NNN shelf 83x30 pine AP CN",
     "ssd": "20190801",
@@ -61616,15 +61625,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W05",
-    "itemNumber": "60548662",
-    "itemName": "VATTENKAR desk org 33x21x43 white AP",
-    "ssd": "20230701",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/vattenkar-desk-organiser-white__1176251_pe895913_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W05",
     "itemNumber": "60515614",
     "itemName": "MITTZON table top 120x68 white AP",
     "ssd": "20240401",
@@ -61841,15 +61841,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W05",
-    "itemNumber": "60528640",
-    "itemName": "MITTZON display shelf f frm w cstrs 80x4 white AP",
-    "ssd": "20240401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/mittzon-display-shelf-for-frame-w-castors-white__1245547_pe921662_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W05",
     "itemNumber": "60515992",
     "itemName": "BORTBERG lumbar cushion 31x23 grey AP",
     "ssd": "20210401",
@@ -61940,42 +61931,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "W05",
-    "itemNumber": "90528648",
-    "itemName": "MITTZON frame with castors 85x205x50 white AP",
-    "ssd": "20240401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/mittzon-frame-with-castors-white__1228746_pe915696_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W05",
-    "itemNumber": "10528647",
-    "itemName": "MITTZON cable box f frm w cstrs 80x13 white AP",
-    "ssd": "20240401",
-    "eds": "20261001",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/mittzon-cable-box-for-frm-w-cstrs-white__1245518_pe921649_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W05",
-    "itemNumber": "80528644",
-    "itemName": "MITTZON container f frame w castors 80x14 white AP",
-    "ssd": "20240401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/mittzon-container-f-frame-w-castors-white__1245546_pe921661_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W05",
-    "itemNumber": "30528646",
-    "itemName": "MITTZON whitebrd/noticebrd 84x110x2 white AP",
-    "ssd": "20240401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/mittzon-whiteboard-noticeboard-white__1212179_pe910492_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "W05",
     "itemNumber": "50531271",
     "itemName": "MITTZON plug-in module 140x12 white AP",
     "ssd": "20240401",
@@ -61999,6 +61954,15 @@
     "ssd": "20240101",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/begripa-handle-light-blue-half-round__1205405_pe907080_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "00387488",
+    "itemName": "PLATSA frame 60x55x180 white AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/platsa-frame-white__0721339_pe733183_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -62030,101 +61994,11 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B09",
-    "itemNumber": "10434111",
-    "itemName": "SMÅSTAD drawer frt 60x15 birch effect AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-drawer-front-birch-effect__0844291_pe778969_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "10436775",
-    "itemName": "KONSTRUERA drwr without front 30x60 white AP",
+    "itemNumber": "10386983",
+    "itemName": "HJÄLPA soft clsng hinge 1-p AP",
     "ssd": "20210201",
     "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/konstruera-drawer-without-front-white__0848792_pe779142_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "20497829",
-    "itemName": "HJÄLPA adj clths rail 60-100 white AP",
-    "ssd": "20211001",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-adjustable-clothes-rail-white__1010872_pe828274_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "20574158",
-    "itemName": "BEGRIPA N handle 130 mm lblue/half-round 2-p AP",
-    "ssd": "20240101",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/begripa-handle-light-blue-half-round__1205405_pe907080_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "30386251",
-    "itemName": "HJÄLPA shelf 60x55 white Metal AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-shelf-white__0643708_pe702036_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "30434129",
-    "itemName": "SMÅSTAD drawer frt 60x30 birch effect AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-drawer-front-birch-effect__0846344_pe779023_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "30436779",
-    "itemName": "KONSTRUERA drwr without front 15x60 white AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/konstruera-drawer-without-front-white__0848789_pe779139_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "40505512",
-    "itemName": "HJÄLPA susp rail 55 white 2-p AP",
-    "ssd": "20211001",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-suspension-rail-white__1010884_pe828282_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "60387579",
-    "itemName": "LÄTTHET leg adjustable white 4-p AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-leg-adjustable-white__0623376_pe691101_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "70434189",
-    "itemName": "SMÅSTAD door 30x120 white 2-p AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-white__0841071_pe778765_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "90342481",
-    "itemName": "HACKÅS handle 100 mm anthracite 2-p AP",
-    "ssd": "20170201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hackas-handle-anthracite__0754253_pe747844_s5.jpg"
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-soft-closing-hinge__0846367_pe779039_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -62138,173 +62012,11 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B09",
-    "itemNumber": "00387488",
-    "itemName": "PLATSA frame 60x55x180 white AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/platsa-frame-white__0721339_pe733183_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "10386983",
-    "itemName": "HJÄLPA soft clsng hinge 1-p AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-soft-closing-hinge__0846367_pe779039_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "10434229",
-    "itemName": "SMÅSTAD door 30x60 birch effect 2-p AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-birch-effect__0841005_pe778740_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "20497829",
-    "itemName": "HJÄLPA adj clths rail 60-100 white AP",
-    "ssd": "20211001",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-adjustable-clothes-rail-white__1010872_pe828274_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "20574158",
-    "itemName": "BEGRIPA N handle 130 mm lblue/half-round 2-p AP",
-    "ssd": "20240101",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/begripa-handle-light-blue-half-round__1205405_pe907080_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "30386251",
-    "itemName": "HJÄLPA shelf 60x55 white Metal AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-shelf-white__0643708_pe702036_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "40505512",
-    "itemName": "HJÄLPA susp rail 55 white 2-p AP",
-    "ssd": "20211001",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-suspension-rail-white__1010884_pe828282_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "60387579",
-    "itemName": "LÄTTHET leg adjustable white 4-p AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-leg-adjustable-white__0623376_pe691101_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "70387461",
-    "itemName": "HJÄLPA p-out rail f bskt 55 white 2-p AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-pull-out-rail-for-baskets-white__0643123_pe701693_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "70434189",
-    "itemName": "SMÅSTAD door 30x120 white 2-p AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-white__0841071_pe778765_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "90342481",
-    "itemName": "HACKÅS handle 100 mm anthracite 2-p AP",
-    "ssd": "20170201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hackas-handle-anthracite__0754253_pe747844_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "90387498",
-    "itemName": "HJÄLPA wre bskt 60x55 white AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
     "itemNumber": "91496585",
     "itemName": "-",
     "ssd": "",
     "eds": "",
     "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "10386983",
-    "itemName": "HJÄLPA soft clsng hinge 1-p AP",
-    "ssd": "20210201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-soft-closing-hinge__0846367_pe779039_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "10434229",
-    "itemName": "SMÅSTAD door 30x60 birch effect 2-p AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-birch-effect__0841005_pe778740_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "60436787",
-    "itemName": "KONSTRUERA shelf 60x30 white AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/konstruera-shelf-white__0848795_pe779144_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "80386376",
-    "itemName": "LÄTTHET susp rl 60 AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-suspension-rail__0566430_pe664688_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "80433523",
-    "itemName": "SMÅSTAD wall stor 60x30x60 white AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-wall-storage-white__0848841_pe779158_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "90342481",
-    "itemName": "HACKÅS handle 100 mm anthracite 2-p AP",
-    "ssd": "20170201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hackas-handle-anthracite__0754253_pe747844_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -62327,15 +62039,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B09",
-    "itemNumber": "30434129",
-    "itemName": "SMÅSTAD drawer frt 60x30 birch effect AP",
-    "ssd": "20210201",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-drawer-front-birch-effect__0846344_pe779023_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
     "itemNumber": "40387486",
     "itemName": "PLATSA frame 60x40x180 white AP",
     "ssd": "20180401",
@@ -62350,24 +62053,6 @@
     "ssd": "20210701",
     "eds": "20260401",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/konstruera-drawer-without-front-white__0978104_pe814011_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "60387579",
-    "itemName": "LÄTTHET leg adjustable white 4-p AP",
-    "ssd": "20180401",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-leg-adjustable-white__0623376_pe691101_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "90342481",
-    "itemName": "HACKÅS handle 100 mm anthracite 2-p AP",
-    "ssd": "20170201",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hackas-handle-anthracite__0754253_pe747844_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -62390,11 +62075,137 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B09",
-    "itemNumber": "00601073",
-    "itemName": "TJENA magaz file white black/dotted 2-p AP",
-    "ssd": "20250401",
-    "eds": "20260401",
-    "imageUrl": "No Image"
+    "itemNumber": "20434224",
+    "itemName": "SMÅSTAD door 30x60 white 2-p AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-white__0841010_pe778745_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "30386251",
+    "itemName": "HJÄLPA shelf 60x55 white Metal AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-shelf-white__0643708_pe702036_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "40505512",
+    "itemName": "HJÄLPA susp rail 55 white 2-p AP",
+    "ssd": "20211001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-suspension-rail-white__1010884_pe828282_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "60387579",
+    "itemName": "LÄTTHET leg adjustable white 4-p AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-leg-adjustable-white__0623376_pe691101_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "70434189",
+    "itemName": "SMÅSTAD door 30x120 white 2-p AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-white__0841071_pe778765_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "20434101",
+    "itemName": "SMÅSTAD drawer frt 60x15 white AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-drawer-front-white__0844296_pe778971_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "30386251",
+    "itemName": "HJÄLPA shelf 60x55 white Metal AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-shelf-white__0643708_pe702036_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "40505512",
+    "itemName": "HJÄLPA susp rail 55 white 2-p AP",
+    "ssd": "20211001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-suspension-rail-white__1010884_pe828282_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "60387579",
+    "itemName": "LÄTTHET leg adjustable white 4-p AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-leg-adjustable-white__0623376_pe691101_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "10386983",
+    "itemName": "HJÄLPA soft clsng hinge 1-p AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-soft-closing-hinge__0846367_pe779039_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "10436775",
+    "itemName": "KONSTRUERA drwr without front 30x60 white AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/konstruera-drawer-without-front-white__0848792_pe779142_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "20497829",
+    "itemName": "HJÄLPA adj clths rail 60-100 white AP",
+    "ssd": "20211001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-adjustable-clothes-rail-white__1010872_pe828274_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "30436779",
+    "itemName": "KONSTRUERA drwr without front 15x60 white AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/konstruera-drawer-without-front-white__0848789_pe779139_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "20497829",
+    "itemName": "HJÄLPA adj clths rail 60-100 white AP",
+    "ssd": "20211001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-adjustable-clothes-rail-white__1010872_pe828274_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "60387579",
+    "itemName": "LÄTTHET leg adjustable white 4-p AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-leg-adjustable-white__0623376_pe691101_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -62404,6 +62215,42 @@
     "ssd": "20260401",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/puggehatt-seat-pad-dot-pattern-round__1454238_pe991574_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "80386376",
+    "itemName": "LÄTTHET susp rl 60 AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/laetthet-suspension-rail__0566430_pe664688_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "90472043",
+    "itemName": "LATMASK clip-on handle 60 mm 2 pack white AP",
+    "ssd": "20210401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/latmask-clip-on-handle-white__0937377_pe793680_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "40434119",
+    "itemName": "SMÅSTAD drawer frt 60x30 white AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-drawer-front-white__0846354_pe779033_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "50574091",
+    "itemName": "LATMASK clip-on handle 60 mm 2 pack orange 2-p AP",
+    "ssd": "20240401",
+    "eds": "20261001",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/latmask-clip-on-handle-orange__1205423_pe907083_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -62440,6 +62287,78 @@
     "ssd": "20220701",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/toeckenfly-pillowcase-for-ergonomic-pillow-white__1089936_pe861760_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "20434224",
+    "itemName": "SMÅSTAD door 30x60 white 2-p AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-white__0841010_pe778745_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "30434129",
+    "itemName": "SMÅSTAD drawer frt 60x30 birch effect AP",
+    "ssd": "20210201",
+    "eds": "20260401",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-drawer-front-birch-effect__0846344_pe779023_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "70387461",
+    "itemName": "HJÄLPA p-out rail f bskt 55 white 2-p AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hjaelpa-pull-out-rail-for-baskets-white__0643123_pe701693_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "70434189",
+    "itemName": "SMÅSTAD door 30x120 white 2-p AP",
+    "ssd": "20210201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-door-white__0841071_pe778765_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "90387498",
+    "itemName": "HJÄLPA wre bskt 60x55 white AP",
+    "ssd": "20180401",
+    "eds": "",
+    "imageUrl": "No Image"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "50574091",
+    "itemName": "LATMASK clip-on handle 60 mm 2 pack orange 2-p AP",
+    "ssd": "20240401",
+    "eds": "20261001",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/latmask-clip-on-handle-orange__1205423_pe907083_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "80433523",
+    "itemName": "SMÅSTAD wall stor 60x30x60 white AP",
+    "ssd": "20210201",
+    "eds": "20260401",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/smastad-wall-storage-white__0848841_pe779158_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B09",
+    "itemNumber": "90342481",
+    "itemName": "HACKÅS handle 100 mm anthracite 2-p AP",
+    "ssd": "20170201",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hackas-handle-anthracite__0754253_pe747844_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -62597,15 +62516,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B09",
-    "itemNumber": "00588712",
-    "itemName": "RISATORP basket 25x26x18 dark grey AP",
-    "ssd": "20240701",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/risatorp-basket-dark-grey__1414214_pe974734_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
     "itemNumber": "10558205",
     "itemName": "BRUKSVARA bed frm 90x200 white AP",
     "ssd": "20240701",
@@ -62692,15 +62602,6 @@
     "ssd": "20231001",
     "eds": "20261001",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/lanespelare-headset-stand-ash-veneer__1231666_pe916012_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B09",
-    "itemNumber": "00541569",
-    "itemName": "VATTENKAR desktop shlf 49x15 white AP",
-    "ssd": "20230101",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/vattenkar-desktop-shelf-white__1150011_pe884319_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -66425,7 +66326,7 @@
     "itemNumber": "70628842",
     "itemName": "ÄRENDE rug high pile 120x180 orange AP",
     "ssd": "20260401",
-    "eds": "",
+    "eds": "20270701",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/aerende-rug-high-pile-orange__1495155_pe1004968_s5.jpg"
   },
   {
@@ -69122,6 +69023,15 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "LS08",
+    "itemNumber": "90535045",
+    "itemName": "HEMNES desk 155x65 white stain/light brown AP",
+    "ssd": "20230401",
+    "eds": "20261001",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/hemnes-desk-white-stain-light-brown__1162629_pe889905_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "LS08",
     "itemNumber": "50607317",
     "itemName": "KAPKASTANJ vase 23 off-white AP",
     "ssd": "20250701",
@@ -69359,7 +69269,7 @@
     "itemNumber": "10574984",
     "itemName": "SILVERPÄRON pillar cndl hldr 20 white AP",
     "ssd": "20240701",
-    "eds": "",
+    "eds": "20270101",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/silverpaeron-pillar-candle-holder-white__1291520_pe934910_s5.jpg"
   },
   {
@@ -80246,6 +80156,24 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "K08",
+    "itemNumber": "10548424",
+    "itemName": "SOLHETTA GU10 600lm dimmable KR",
+    "ssd": "20240101",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/solhetta-led-bulb-gu10-600-lumen-dimmable__1162556_pe889870_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "K08",
+    "itemNumber": "80337705",
+    "itemName": "NYMÅNE ceil spot w 4 spots white KR",
+    "ssd": "20170801",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/nymane-ceiling-spotlight-with-4-spots-white__0607350_pe682899_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "K08",
     "itemNumber": "40319973",
     "itemName": "DUKTIG N play kitchen 72x40x109 birch AP CN",
     "ssd": "20160401",
@@ -83540,6 +83468,96 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "BR02",
+    "itemNumber": "80440632",
+    "itemName": "ENHET hi cb w 4 shlvs 30x30x180 white AP",
+    "ssd": "20210701",
+    "eds": "20260701",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-high-cb-w-4-shelves-white__0784873_pe761918_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "30481328",
+    "itemName": "ENHET door 30x180 white AP",
+    "ssd": "20210701",
+    "eds": "20260701",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-door-white__0807124_pe770315_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "90535192",
+    "itemName": "HAVBÄCK wash-stnd w drws 60x48x63 white AP",
+    "ssd": "20241001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/havbaeck-wash-stand-with-drawers-white__1195150_pe902262_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "30545085",
+    "itemName": "ORRSJÖN wsh-bsn 62x49 white AP",
+    "ssd": "20240401",
+    "eds": "",
+    "imageUrl": "No Image"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "90566876",
+    "itemName": "ENSEN wash-basin mx tp chrome-plated KR",
+    "ssd": "20240401",
+    "eds": "20261001",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/ensen-wash-basin-mixer-tap-chrome-plated__0755162_pe748289_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "00535498",
+    "itemName": "LETTAN mirr cb w drs 60x15x95 mirr eff/mirr gls AP",
+    "ssd": "20240401",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/lettan-mirror-cabinet-with-doors-mirror-effect-mirror-glass__1195577_pe902498_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "40516110",
+    "itemName": "ENHET ext rail 60-100 white AP",
+    "ssd": "20221001",
+    "eds": "20260401",
+    "imageUrl": "No Image"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "10440635",
+    "itemName": "ENHET wall cb w 2 shlvs 40x15x75 white AP",
+    "ssd": "20210701",
+    "eds": "20260701",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-wall-cb-w-2-shelves-white__0784879_pe761921_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "40481605",
+    "itemName": "ENHET wall fr w shlvs 40x15x75 anthracite AP",
+    "ssd": "20210701",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-wall-frame-with-shelves-anthracite__0805457_pe769564_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
+    "itemNumber": "30306018",
+    "itemName": "VIKARN shower curtain rod white AP CN",
+    "ssd": "20161001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/vikarn-shower-curtain-rod-white__0601990_pe680080_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "BR02",
     "itemNumber": "30400308",
     "itemName": "TISKEN crnr shlf ut w suction cup white AP",
     "ssd": "20190201",
@@ -83594,29 +83612,11 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "BR02",
-    "itemNumber": "40481605",
-    "itemName": "ENHET wall fr w shlvs 40x15x75 anthracite AP",
-    "ssd": "20210701",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-wall-frame-with-shelves-anthracite__0805457_pe769564_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
     "itemNumber": "70481331",
     "itemName": "ENHET door 40x75 white AP",
     "ssd": "20210701",
     "eds": "20260401",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-door-white__0807142_pe770249_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "10440635",
-    "itemName": "ENHET wall cb w 2 shlvs 40x15x75 white AP",
-    "ssd": "20210701",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-wall-cb-w-2-shelves-white__0784879_pe761921_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -83630,92 +83630,11 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "BR02",
-    "itemNumber": "10481329",
-    "itemName": "ENHET door 30x60 white AP",
-    "ssd": "20210701",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-door-white__0807130_pe770321_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "39396566",
-    "itemName": "-",
-    "ssd": "",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-mirror-cabinet-with-2-doors-white__0816146_pe773292_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "20440588",
-    "itemName": "ENHET bs cb f wb w shlf 60x40x60 white AP",
-    "ssd": "20210701",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-base-cb-f-washbasin-w-shelf-white__0784863_pe761909_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "09546911",
-    "itemName": "-",
-    "ssd": "",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/tvaellen-wash-basin-with-water-trap-white__1064599_pe851707_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "30566879",
-    "itemName": "PILKÅN wash-basin mx tp chrome-plated KR",
-    "ssd": "20240401",
-    "eds": "20261001",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/pilkan-wash-basin-mixer-tap-chrome-plated__0644803_pe702977_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "60481633",
-    "itemName": "ENHET legs f cb 23.5 anthracite 2-p AP",
-    "ssd": "20210701",
-    "eds": "20260401",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
     "itemNumber": "30562433",
     "itemName": "RÄNNILEN wtr trp w flx pipe, 1 b AP",
     "ssd": "20240401",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/raennilen-water-trap-w-flexible-pipe-1-bowl__1195394_pe902395_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "10424956",
-    "itemName": "OPPEJEN shwr screen 84x199 glass AP",
-    "ssd": "20220401",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/oppejen-shower-screen-glass__0844309_pe778956_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "60481609",
-    "itemName": "ENHET bs fr w shlvs 40x40x60 anthracite AP",
-    "ssd": "20210701",
-    "eds": "20260401",
-    "imageUrl": "No Image"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "BR02",
-    "itemNumber": "19396553",
-    "itemName": "-",
-    "ssd": "",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/enhet-hi-cb-w-4-shlvs-door-white__0816086_pe773312_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -85533,7 +85452,7 @@
     "itemName": "NATTJASMIN dc/2pwc 240x220/50x80 light beige AP",
     "ssd": "20190401",
     "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/nattjasmin-duvet-cover-and-2-pillowcases-light-beige__0720527_pe732613_s5.jpg"
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/nattjasmin-duvet-cover-and-2-pillowcases-light-beige__1556712_pe1024505_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -92777,7 +92696,7 @@
     "itemNumber": "10574984",
     "itemName": "SILVERPÄRON pillar cndl hldr 20 white AP",
     "ssd": "20240701",
-    "eds": "",
+    "eds": "20270101",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/silverpaeron-pillar-candle-holder-white__1291520_pe934910_s5.jpg"
   },
   {
@@ -106031,15 +105950,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B11",
-    "itemNumber": "40585132",
-    "itemName": "ÄNGSLILJA dc/2pwc 200x230/50x80 red-brown AP",
-    "ssd": "20241001",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/aengslilja-duvet-cover-and-2-pillowcases-red-brown__1316090_pe940630_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B11",
     "itemNumber": "10600501",
     "itemName": "DOFTAKLEJA dc/2pwc 200x230/50x80 whi/anthracite AP",
     "ssd": "20250701",
@@ -106421,7 +106331,7 @@
     "itemNumber": "10574984",
     "itemName": "SILVERPÄRON pillar cndl hldr 20 white AP",
     "ssd": "20240701",
-    "eds": "",
+    "eds": "20270101",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/silverpaeron-pillar-candle-holder-white__1291520_pe934910_s5.jpg"
   },
   {
@@ -107615,20 +107525,20 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B08",
+    "itemNumber": "90610921",
+    "itemName": "RÅVAROR rug flatw 170x240 handw blk/brown grey AP",
+    "ssd": "20251001",
+    "eds": "",
+    "imageUrl": "https://www.ikea.com/kr/ko/images/products/ravaror-rug-flatwoven-handwoven-black-brown-grey__1411410_pe973125_s5.jpg"
+  },
+  {
+    "mediaType": "ROOM_SETTINGS",
+    "area": "B08",
     "itemNumber": "30602387",
     "itemName": "GRÄSROTSFLY duvet cool 150x200 AP",
     "ssd": "20250401",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/graesrotsfly-duvet-cool__1360220_pe954378_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B08",
-    "itemNumber": "70617725",
-    "itemName": "TORNTUSS dc/pwc 150x200/50x80 dark blue/check AP",
-    "ssd": "20251001",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/torntuss-duvet-cover-and-pillowcase-dark-blue-check__1427183_pe980181_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -107773,15 +107683,6 @@
     "ssd": "20250701",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/bild-poster-fig-plant__1385659_pe963380_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B08",
-    "itemNumber": "70362267",
-    "itemName": "FJANTIG hook black 3-p AP",
-    "ssd": "20171001",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/fjantig-hook-black__0710517_pe727612_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -107957,15 +107858,6 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B08",
-    "itemNumber": "70362267",
-    "itemName": "FJANTIG hook black 3-p AP",
-    "ssd": "20171001",
-    "eds": "20260701",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/fjantig-hook-black__0710517_pe727612_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B08",
     "itemNumber": "70601989",
     "itemName": "BILD poster 40x50 fig plant AP",
     "ssd": "20250701",
@@ -108047,29 +107939,11 @@
   {
     "mediaType": "ROOM_SETTINGS",
     "area": "B08",
-    "itemNumber": "50318567",
-    "itemName": "ÄNGSLILJA dc/pwc 150x200/50x80 white AP JP",
-    "ssd": "20160801",
-    "eds": "",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/aengslilja-duvet-cover-and-pillowcase-white__1135310_pe878966_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B08",
     "itemNumber": "60466717",
     "itemName": "DYTÅG crtns 1pr 145x250 white/with heading tape AP",
     "ssd": "20200801",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/dytag-curtains-1-pair-white-with-heading-tape__0803894_pe769366_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B08",
-    "itemNumber": "20217249",
-    "itemName": "BLÅST finials 1 pair black AP CN",
-    "ssd": "20140801",
-    "eds": "20260401",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/blast-finials-1-pair-black__0603428_pe680805_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
@@ -108169,15 +108043,6 @@
     "ssd": "20140801",
     "eds": "",
     "imageUrl": "https://www.ikea.com/kr/ko/images/products/raecka-curtain-rod-black__0601961_pe680070_s5.jpg"
-  },
-  {
-    "mediaType": "ROOM_SETTINGS",
-    "area": "B08",
-    "itemNumber": "20500148",
-    "itemName": "TANNISBY rug flatwoven 160x230 handmd/grey blk AP",
-    "ssd": "20210701",
-    "eds": "20261001",
-    "imageUrl": "https://www.ikea.com/kr/ko/images/products/tannisby-rug-flatwoven-handmade-grey-black__0937528_pe793780_s5.jpg"
   },
   {
     "mediaType": "ROOM_SETTINGS",
